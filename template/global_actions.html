@@ -1,4 +1,4 @@
-<div class="global_actions container" ng-if="! viewMode && ! anonymous">
+<div class="global_actions container" ng-if="! viewMode && ! anonymous" ng-style="{zoom:windowSize.buttonZoom}">
   <div class="row">
     <div class="col-xs-3">
       <span class="label label-primary">Basic</span>
@@ -12,9 +12,12 @@
       <span class="label label-default">Rule</span>
       <br>
       <span class="btn-group">
-        <button ng-repeat="action in global_actions | group: 'rule'" ng-class="action.button_css" ng-click="func_scope(action.action)" ng-disabled="! func_scope(action.enable)">
+        <button ng-repeat="action in global_actions | group: 'rule'" ng-if="! action.hasOwnProperty('indexes')" ng-class="action.button_css" ng-click="func_scope(action.action)" ng-disabled="! func_scope(action.enable)">
           {{action.name}}
-        </button> </span>
+        </button> <span ng-repeat="action in global_actions | group: 'rule'" ng-if="action.hasOwnProperty('indexes')" >
+          <button ng-repeat="index in func_scope(action.indexes)" ng-class="action.button_css" ng-click="func_index_scope( action.action , index)" ng-disabled="! func_index_scope(action.enable, index)">
+            {{action.name}}{{index}}
+          </button> </span> </span>
     </div>
   </div>
   <div class="row">

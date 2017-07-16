@@ -1,0 +1,15 @@
+[
+	{
+		"source": "nameList",
+		"filter": {
+			"param": "lot",
+			"oper": "==",
+			"crit": 5
+		},
+		"order": ["entryNo"],
+		"profile": true,
+		"property": {
+			"lot": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+		}
+	}
+]

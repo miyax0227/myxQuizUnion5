@@ -50,6 +50,7 @@ app
 	  qCommonService.playoffoff = playoffoff;
 	  qCommonService.editTweet = editTweet;
 	  qCommonService.anonymousMode = anonymousMode;
+	  qCommonService.getEntryFileName = getEntryFileName;
 	  return qCommonService;
 
 	  /*************************************************************************
@@ -515,20 +516,68 @@ app
 	   * @param {object} player プレイヤー
 	   * @return {object} CSSオブジェクト
 	   ************************************************************************/
-	  function getPlayerCSS(players, player, windowSize) {
-		var leftBorder = 0;
-		var rightBorder = windowSize.width;
-		var playersWidth = rightBorder - leftBorder;
-		var count = players.length;
+	  function getPlayerCSS(players, player, windowSize, lineProperty) {
+		var property = {};
+		if (lineProperty.hasOwnProperty(player.line)) {
+		  property = lineProperty[player.line];
+		} else {
+		  property = {
+			left : 0,
+			right : 1,
+			y : 0.4,
+			zoom : 1
+		  }
+		}
+
+		var count = players.filter(function(p) {
+		  return p.line == player.line;
+		}).length;
+
 		var position = player["position"];
 
-		var playerLeft = leftBorder + playersWidth / count * (position + 0.5);
-		var playerTop = windowSize.height / 2;
+		var playerTop;
+		var playerLeft;
+		var zoom;
+		var visibility;
+		var display;
+
+		if (property.hasOwnProperty('x')) {
+		  playerLeft = windowSize.width * property.x;
+		} else {
+		  var left = property.left;
+		  var right = property.right;
+		  playerLeft = windowSize.width * (left + (right - left) / count * (position + 0.5));
+		}
+
+		if (property.hasOwnProperty('y')) {
+		  playerTop = windowSize.height * property.y;
+		} else {
+		  var top = property.top;
+		  var bottom = property.bottom;
+		  playerTop = windowSize.height * (top + (bottom - top) / count * (position + 0.5));
+		}
+
+		if (property.hasOwnProperty('zoom')) {
+		  zoom = property.zoom * windowSize.objectZoom;
+		} else {
+		  zoom = windowSize.objectZoom;
+		}
+
+		if (property.hasOwnProperty('invisible')) {
+		  visibility = "hidden";
+		  display = "none";
+		} else {
+		  visibility = "visible";
+		  display = "inline";
+		}
 
 		return {
 		  position : 'absolute',
 		  left : playerLeft + 'px',
 		  top : playerTop + 'px',
+		  transform : "scale(" + zoom + "," + zoom + ")",
+		  visibility : visibility,
+		  display : display,
 		  'z-index' : player["position"] - players.length
 		};
 	  }
@@ -745,6 +794,16 @@ app
 	   ************************************************************************/
 	  function getHistoryFileName() {
 		return __dirname + '/../../history/current/' + getRoundName() + '.json';
+	  }
+
+	  /*************************************************************************
+	   * エントリーファイル名の取得
+	   * 
+	   * @memberOf qCommon
+	   * @return {string} 履歴ファイル名
+	   ************************************************************************/
+	  function getEntryFileName() {
+		return __dirname + '/../../history/current/' + getRoundName() + '-entry.json';
 	  }
 
 	  /*************************************************************************

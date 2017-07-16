@@ -45,7 +45,7 @@
       <td ng-repeat="item in items| with: 'value'" ng-if="item.hasOwnProperty('style')" id="{{item.key}}">
       <input  ng-if="item.style == 'string'"    ng-model="player[item.key]"  class="form-control btn " />
       <input  ng-if="item.style == 'boolean'"   ng-model="player[item.key]"  class="form-control input-sm" type="checkbox" />
-      <input  ng-if="item.style == 'number'"    ng-model="player[item.key]"  type="number" class="form-control number btn " />
+      <input  ng-if="item.style == 'number'"    ng-model="player[item.key]"  type="text" class="form-control number btn " />
       <input  ng-if="item.style == 'typeahead'" ng-model="player[item.key]"  type="text" typeahead="pref for pref in item.option | filter:$viewValue | limitTo:8" class="form-control btn " />
       <select ng-if="item.style == 'select'"    ng-model="player[item.key]"  ng-options="status for status in item.option" type="text" class="form-control btn " ></select></td>
     </tr>

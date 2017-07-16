@@ -115,10 +115,10 @@ app.config([ "$locationProvider", function($locationProvider) {
 		function($scope, $q, fileResource, qCommon, round) {
 		  /* Timer表示 */
 		  $scope.timerDisplay = "";
-		  
-		  /* 匿名状態　*/
+
+		  /* 匿名状態 */
 		  $scope.anonymous = qCommon.anonymousMode();
-		  
+
 		  /* スクリーンショットを撮っている最中か */
 		  $scope.capturing = false;
 
@@ -132,6 +132,7 @@ app.config([ "$locationProvider", function($locationProvider) {
 		  $scope.adjustWindow = function() {
 			qCommon.adjustWindow($scope);
 		  }
+
 		  /* getPlayerCSS - プレイヤーの位置情報CSS */
 		  $scope.getPlayerCSS = qCommon.getPlayerCSS;
 
@@ -196,7 +197,7 @@ app.config([ "$locationProvider", function($locationProvider) {
 			$scope.windowSize = strs[4][0];
 			qCommon.resizeWindow($scope);
 			qCommon.adjustWindow($scope);
-			
+
 			// 画面キャプチャ用windowのサイズ
 			$scope.captureWindowSize = strs[4][4];
 
@@ -207,6 +208,9 @@ app.config([ "$locationProvider", function($locationProvider) {
 				$scope.property[key] = value;
 			  }
 			});
+
+			// プレイヤー表示座標設定
+			$scope.lineProperty = strs[6][1];
 
 			// tweetのひな型
 			$scope.property.tweet = {};
@@ -246,7 +250,9 @@ app.config([ "$locationProvider", function($locationProvider) {
 				// tweetsリストを追加
 				initCurrent.header.tweets = [];
 				// プレイヤー部分の初期化
-				initCurrent.players = qCommon.initPlayers(strs[3], $scope.items);
+				var entryFileName = qCommon.getEntryFileName();
+				var entryPlayers = JSON.parse(fs.readFileSync(entryFileName, 'utf-8'));
+				initCurrent.players = qCommon.initPlayers(entryPlayers, $scope.items);
 				qCommon.refreshCurrent(initCurrent, $scope);
 			  }
 
@@ -277,6 +283,11 @@ app.config([ "$locationProvider", function($locationProvider) {
 			/* 関数のラッピング(全体) */
 			$scope.func_scope = function(func) {
 			  return func($scope);
+			};
+
+			/* 関数のラッピング（繰り返し） */
+			$scope.func_index_scope = function(func, index) {
+			  return func(index, $scope);
 			};
 
 			// 従属変数の再計算

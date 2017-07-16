@@ -23,21 +23,18 @@
         <th>#</th>
         <th>ラウンド名</th>
         <th>問目</th>
+        <th><a href="javascript:void(0);" ng-click="openNameList()">招集</a></th>
         <th><a href="javascript:void(0);" ng-click="initialize()">初期化</a></th>
-      </tr>
-      <tr>
-        <th>-</th>
-        <th>nameList</th>
-        <th><a href="javascript:void(0);" ng-click="openNameList()">読込</a></th>
-        <th></th>
       </tr>
       <tr ng-repeat="round in rounds">
         <td> {{rounds.indexOf(round)}} </td>
         <td><a target="_blank" ng-click="round.click()" href="javascript:void(0);">{{round.name}}</a></td>
         <td> {{round.qCount}} </td>
+        <td><a href="javascript:void(0);" ng-click="round.callUp()">招集</a></td>
         <td><a href="javascript:void(0);" ng-click="round.initialize()" ng-if="round.initializable">初期化</a></td>
       </tr>
     </table>
+    
     <div class="text-center">
       <div class="btn-toolbar">
         <button class="btn btn-info btn" ng-click="saveJsonFile()" ng-if="tableTitle != null">

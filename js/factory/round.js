@@ -617,40 +617,93 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 	};
   });
 
+  
+  
   /*****************************************************************************
    * global_actions - 全体に対する操作の設定(ラッピング)
    ****************************************************************************/
   round.global_actions.map(function(global_action) {
+	
+	if(angular.isUndefined(global_action.indexes)) {
+	  if (angular.isDefined(global_action.indexes0)) {
+		global_action.indexes = function(scope){
+		  var players = scope.current.players;
+		  var header = scope.current.header;
+		  var property = scope.property;
+		  return global_action.indexes0(players, header, property);
+		}
+	  }
+	  
+	}
+	
 	if (angular.isUndefined(global_action.enable)) {
-	  global_action.enable = function(scope) {
-		return global_action.enable0(scope.current.players, scope.current.header, scope.property);
-	  };
+	  if (angular.isDefined(global_action.enable0)) {
+		global_action.enable = function(scope) {
+		  var players = scope.current.players;
+		  var header = scope.current.header;
+		  var property = scope.property;
+		  return global_action.enable0(players, header, property);
+		};
+
+	  } else if (angular.isDefined(global_action.enable1)) {
+		global_action.enable = function(index, scope) {
+		  var players = scope.current.players;
+		  var header = scope.current.header;
+		  var property = scope.property;
+		  return global_action.enable1(index, players, header, property);
+		};
+	  }
 	}
 	if (angular.isUndefined(global_action.action)) {
-	  global_action.action = function(scope) {
-		var players = scope.current.players;
-		var header = scope.current.header;
-		var property = scope.property;
-		var items = scope.items;
+	  if (angular.isDefined(global_action.action0)) {
+		global_action.action = function(scope) {
+		  var players = scope.current.players;
+		  var header = scope.current.header;
+		  var property = scope.property;
+		  var items = scope.items;
 
-		// action0を実行
-		global_action.action0(players, header, property);
-		// 再計算
-		calc(players, header, items, property);
-		// 勝抜・敗退判定
-		judgement(players, header, property);
-		// 再計算
-		calc(players, header, items, property);
-		// ツイート生成
-		if (global_action.hasOwnProperty('tweet')) {
-		  if (property.tweet.hasOwnProperty(global_action.tweet)) {
-			qCommon.editTweet(header.tweets, property.tweet[global_action.tweet], header, true);
+		  // action0を実行
+		  global_action.action0(players, header, property);
+		  // 再計算
+		  calc(players, header, items, property);
+		  // 勝抜・敗退判定
+		  judgement(players, header, property);
+		  // 再計算
+		  calc(players, header, items, property);
+		  // ツイート生成
+		  if (global_action.hasOwnProperty('tweet')) {
+			if (property.tweet.hasOwnProperty(global_action.tweet)) {
+			  qCommon.editTweet(header.tweets, property.tweet[global_action.tweet], header, true);
+			}
 		  }
-		}
-		// 履歴作成
-		qCommon.createHist(scope);
+		  // 履歴作成
+		  qCommon.createHist(scope);
+		};
+	  } else if (angular.isDefined(global_action.action1)) {
+		global_action.action = function(index, scope) {
+		  var players = scope.current.players;
+		  var header = scope.current.header;
+		  var property = scope.property;
+		  var items = scope.items;
 
-	  };
+		  // action0を実行
+		  global_action.action1(index, players, header, property);
+		  // 再計算
+		  calc(players, header, items, property);
+		  // 勝抜・敗退判定
+		  judgement(players, header, property);
+		  // 再計算
+		  calc(players, header, items, property);
+		  // ツイート生成
+		  if (global_action.hasOwnProperty('tweet')) {
+			if (property.tweet.hasOwnProperty(global_action.tweet)) {
+			  qCommon.editTweet(header.tweets, property.tweet[global_action.tweet], header, true);
+			}
+		  }
+		  // 履歴作成
+		  qCommon.createHist(scope);
+		};
+	  }
 	}
   });
 
@@ -663,5 +716,6 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 	});
   }
 
+  console.log(round);
   return round;
 } ]);

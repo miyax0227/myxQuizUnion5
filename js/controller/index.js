@@ -16,6 +16,15 @@ app
   $scope.tableHead = [];
   $scope.tableContent = [];
   $scope.rounds = qFile.rounds;
+  angular.forEach($scope.rounds, function(round){
+	round.initialize = function(){
+	  round.initialize0($scope);
+	};
+	round.callUp = function(){
+	  round.callUp0($scope);
+	};
+  });
+  
   $scope.initialize = qFile.initialize;
   $scope.twitterWindowOpen = qFile.twitterWindowOpen;
   $scope.openFolder = qFile.openFolder;

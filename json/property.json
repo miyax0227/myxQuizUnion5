@@ -1,9 +1,23 @@
 [
-	{
-		"title": "",
-		"timer": 180,
-		"maxRankDisplay": 2,
-		"openRankArray": null,
-		"tweetCupTitle":"[オープン]"
-	}
+    {
+        "title": "",
+        "timer": 180,
+        "maxRankDisplay": 2,
+        "openRankArray": null,
+        "tweetCupTitle": "[オープン]"
+    },
+    {
+        "right": {
+            "x": 1.5,
+            "y": 0.5,
+            "zoom": 0.1,
+            "invisible":true
+        },
+        "left": {
+            "x": -0.5,
+            "y": 0.5,
+            "zoom": 0.1,
+            "invisible":true
+        }
+    }
 ]
