@@ -11,17 +11,17 @@
 		"explain": "メニューウィンドウの表示位置",
 		"left": 0,
 		"top": 0,
-		"width": 200,
+		"width": 300,
 		"height": 600
 	}, {
 		"explain": "操作ウィンドウの表示位置",
-		"left": 200,
+		"left": 300,
 		"top": 0,
-		"width": 800,
-		"height": 600
+		"width": 720,
+		"height": 500
 	}, {
 		"explain": "Twitterウィンドウの表示位置",
-		"left": 200,
+		"left": 300,
 		"top": 0,
 		"width": 400,
 		"height": 300
@@ -29,7 +29,7 @@
 		"explain": "画面キャプチャ用ウィンドウの表示位置（画面外の座標になるようにすること）",
 		"left": 1000,
 		"top": 1000,
-		"width": 800,
-		"height": 600
+		"width": 1360,
+		"height": 768
 	}
 ]

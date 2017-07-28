@@ -28,7 +28,7 @@
 		"style": "number",
 		"profile": true,
 		"css": "t torii1",
-		"repeatChar":"○"
+		"repeatChar":";"
 	}, {
 		"key": "name2"      ,
 		"style": "string",
@@ -48,7 +48,7 @@
 		"style": "number",
 		"profile": true,
 		"css": "t torii2",
-		"repeatChar":"○"
+		"repeatChar":";"
 	}, {
 		"key": "name3"      ,
 		"style": "string",
@@ -68,7 +68,7 @@
 		"style": "number",
 		"profile": true,
 		"css": "t torii3",
-		"repeatChar":"○"
+		"repeatChar":";"
 	}, {
 		"key": "name4"      ,
 		"style": "string",
@@ -88,7 +88,7 @@
 		"style": "number",
 		"profile": true,
 		"css": "t torii4",
-		"repeatChar":"○"
+		"repeatChar":";"
 	}, {
 		"key": "name5"      ,
 		"style": "string",
@@ -108,7 +108,7 @@
 		"style": "number",
 		"profile": true,
 		"css": "t torii5",
-		"repeatChar":"○"
+		"repeatChar":";"
 	}, {
 		"key": "motion",
 		"style": "string",

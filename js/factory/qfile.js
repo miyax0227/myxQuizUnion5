@@ -9,11 +9,17 @@ var app = angular.module(appName);
  * @class
  * @name qFile
  ******************************************************************************/
-app.service('qFile', [ '$window', '$interval', '$filter', function($window, $interval, $filter) {
+app.
+
+service('qFile', [ '$window', '$interval', '$filter', '$uibModal',
+
+function($window, $interval, $filter, $uibModal) {
   const
   fs = require('fs');
   const
   dir = __dirname + '/round';
+  const
+  nameListFile = __dirname + "/history/current/nameList.json";
   const
   remote = require('electron').remote;
   const
@@ -30,8 +36,6 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
   }).map(function(item) {
 	return item.key
   });
-
-  console.log(profiles);
 
   // excel.jsonからウィンドウサイズを取得
   var excelProperty = JSON.parse(fs.readFileSync(__dirname + '/json/excel.json', 'utf-8'));
@@ -62,11 +66,20 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
 		// historyFile - 履歴ファイルのフルパス
 		historyFile : __dirname + '/history/current/' + file + '.json',
 
+		// entryFile - エントリーファイルのフルパス
+		entryFile : __dirname + '/history/current/' + file + '-entry.json',
+
 		// qCount - 問目
 		qCount : null,
 
 		// initializable - 初期化可能か
 		initializable : false,
+
+		// startable - 開始可能か
+		startable : false,
+
+		// callable - 招集可能か
+		callable : false,
 
 		// click - ラウンド目クリック時の処理（ウィンドウオープン）
 		click : function() {
@@ -86,7 +99,7 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
 		  scope.tableContent = callMember(require('./round/' + file + "/entry.json"));
 		  scope.tableHead = Object.keys(scope.tableContent[0]);
 		  scope.tableTitle = file;
-		  scope.tableFilename = __dirname + "/history/current/" + file + "-entry.json";
+		  scope.tableFilename = __dirname + '/history/current/' + file + '-entry.json';
 		}
 	  };
 
@@ -94,17 +107,43 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
 	}
   });
 
-  // 毎秒ファイル状態を確認
+  // 名前リストファイルの存在
+  var nameListExists = false;
+
   var t = $interval(function() {
+	// 毎秒ファイル状態を確認
+
+	// 名前リストファイルの存在確認
+	try {
+	  fs.statSync(nameListFile);
+	  nameListExists = true;
+	} catch (e) {
+	  nameListExists = false;
+	}
+
+	// ラウンド毎のファイル確認
 	angular.forEach(rounds, function(round) {
+	  // 各ラウンドの履歴ファイルの存在確認
 	  try {
 		var data = JSON.parse(fs.readFileSync(round.historyFile, 'utf-8'));
 		round.qCount = data.header.qCount;
 		round.initializable = true;
+
 	  } catch (e) {
 		round.qCount = null;
 		round.initializable = false;
 	  }
+
+	  // 各ラウンドのエントリーファイルの存在確認
+	  try {
+		fs.statSync(round.entryFile);
+		round.startable = nameListExists;
+
+	  } catch (e) {
+		round.startable = false;
+	  }
+
+	  round.callable = nameListExists;
 	});
   }, 1000);
 
@@ -116,8 +155,12 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
   function initialize() {
 	var oldFile = __dirname + '/history/current';
 	var newFile = __dirname + '/history/' + dateString();
-	fs.renameSync(oldFile, newFile);
-	fs.mkdirSync(oldFile);
+	var msg = "全ての履歴ファイルを初期化してもよろしいでしょうか ?";
+
+	confirm(msg, function() {
+	  fs.renameSync(oldFile, newFile);
+	  fs.mkdirSync(oldFile);
+	});
   }
 
   /*****************************************************************************
@@ -186,7 +229,7 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
 	  scope.tableHead = nameListColumn;
 	  scope.tableContent = nameList;
 	  scope.tableTitle = "nameList";
-	  scope.tableFilename = __dirname + "/history/current/nameList.json";
+	  scope.tableFilename = nameListFile;
 	});
   }
 
@@ -197,17 +240,27 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
    * @param {object} scope - $scope
    ****************************************************************************/
   function saveJsonFile(scope) {
+	var msg = "既にあるファイルを置き換えてもよろしいですか ?";
+	var oldFile = scope.tableFilename;
+	var newFile = scope.tableFilename.replace(/\.json/, "_" + dateString() + ".json");
+
 	try {
 	  fs.statSync(scope.tableFilename);
-	  var oldFile = scope.tableFilename;
-	  var newFile = scope.tableFilename.replace(/\.json/, "_" + dateString() + ".json");
-	  fs.renameSync(oldFile, newFile);
+	  
+	  //ファイルが存在する場合
+	  confirm(msg, function() {
+		fs.renameSync(oldFile, newFile);
+		fs.writeFileSync(oldFile, JSON.stringify(scope.tableContent));
+		cancelJsonFile(scope);
+	  })
+
+	  // ファイルが存在しない場合
 	} catch (e) {
+	  fs.writeFileSync(oldFile, JSON.stringify(scope.tableContent));
+	  cancelJsonFile(scope);
 
 	}
 
-	fs.writeFileSync(scope.tableFilename, JSON.stringify(scope.tableContent));
-	cancelJsonFile(scope);
   }
 
   /*****************************************************************************
@@ -239,6 +292,34 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
    ****************************************************************************/
   function twitterWindowOpen() {
 	$window.open("./twitter.html", "Twitter", twitterWindowParameter);
+  }
+
+  /*****************************************************************************
+   * 確認用ウィンドウを開き、OKの場合のみ処理を実行する
+   * 
+   * @memberOf qFile
+   * @param {string} msg - 確認用に表示するメッセージ
+   * @param {object}() func - OKの場合実行する処理
+   ****************************************************************************/
+  function confirm(msg, func) {
+	var modal = $uibModal.open({
+	  templateUrl : "./template/confirm.html",
+	  controller : "modal",
+	  resolve : {
+		myMsg : function() {
+		  return {
+			msg : msg
+		  }
+		}
+	  }
+	});
+
+	modal.result.then(function() {
+	  // OKの場合のみ実行
+	  func();
+	}, function() {
+	});
+
   }
 
   /*****************************************************************************
@@ -274,7 +355,7 @@ app.service('qFile', [ '$window', '$interval', '$filter', function($window, $int
 		  // nameListが指定されている場合
 		  if (obj.source == "nameList") {
 			console.log("callup by nameList");
-			subEntryList = require("./history/current/nameList.json");
+			subEntryList = require(nameListFile);
 
 			// ラウンド名が指定されている場合
 		  } else {

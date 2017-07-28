@@ -21,16 +21,21 @@
     <table class="table table-condensed">
       <tr>
         <th>#</th>
+        <th><a href="javascript:void(0);" ng-click="openNameList()">招集</a></th>
         <th>ラウンド名</th>
         <th>問目</th>
-        <th><a href="javascript:void(0);" ng-click="openNameList()">招集</a></th>
         <th><a href="javascript:void(0);" ng-click="initialize()">初期化</a></th>
       </tr>
       <tr ng-repeat="round in rounds">
         <td> {{rounds.indexOf(round)}} </td>
-        <td><a target="_blank" ng-click="round.click()" href="javascript:void(0);">{{round.name}}</a></td>
+        
+        <td><a href="javascript:void(0);" ng-click="round.callUp()"  ng-if="round.callable">招集</a></td>
+        
+        <td ng-if="round.startable"><a target="_blank" ng-click="round.click()" href="javascript:void(0);">{{round.name}}</a></td>
+        <td ng-if="! round.startable">{{round.name}}</td>
+        
         <td> {{round.qCount}} </td>
-        <td><a href="javascript:void(0);" ng-click="round.callUp()">招集</a></td>
+        
         <td><a href="javascript:void(0);" ng-click="round.initialize()" ng-if="round.initializable">初期化</a></td>
       </tr>
     </table>

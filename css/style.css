@@ -240,11 +240,11 @@ div.global_actions {
 div.timer_actions {
     position: absolute;
     right: 2%;
-    top: 50px;
+    top: 15px;
 }
 
 .modal-dialog {
-    width: 768px;
+    width: 1200px;
 }
 
 .container {
