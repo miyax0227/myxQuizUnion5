@@ -88,18 +88,30 @@ function($window, $interval, $filter, $uibModal) {
 
 		// initialize0 - 初期化クリック時の処理
 		initialize0 : function(scope) {
+		  var msg = "履歴ファイルを初期化してよろしいでしょうか ?";
 		  var oldFile = __dirname + '/history/current/' + file + '.json';
 		  var newFile = __dirname + '/history/current/' + file + '_' + dateString() + '.json';
-		  fs.renameSync(oldFile, newFile);
+
+		  confirm(msg, function() {
+			fs.renameSync(oldFile, newFile);
+		  });
 		},
 
 		// callUp0 - 招集処理
 		callUp0 : function(scope) {
-		  console.log(require('./round/' + file + "/entry.json"));
-		  scope.tableContent = callMember(require('./round/' + file + "/entry.json"));
-		  scope.tableHead = Object.keys(scope.tableContent[0]);
-		  scope.tableTitle = file;
-		  scope.tableFilename = __dirname + '/history/current/' + file + '-entry.json';
+		  var filename = './round/' + file + "/entry.json";
+		  var entryList = callMember(JSON.parse(fs.readFileSync(filename, 'utf-8')));
+
+		  if (entryList.length == 0) {
+			cancelJsonFile(scope);
+
+		  } else {
+			scope.tableContent = entryList;
+			scope.tableHead = Object.keys(scope.tableContent[0]);
+			scope.tableTitle = file;
+			scope.tableFilename = __dirname + '/history/current/' + file + '-entry.json';
+		  }
+
 		}
 	  };
 
@@ -246,8 +258,8 @@ function($window, $interval, $filter, $uibModal) {
 
 	try {
 	  fs.statSync(scope.tableFilename);
-	  
-	  //ファイルが存在する場合
+
+	  // ファイルが存在する場合
 	  confirm(msg, function() {
 		fs.renameSync(oldFile, newFile);
 		fs.writeFileSync(oldFile, JSON.stringify(scope.tableContent));
@@ -319,7 +331,26 @@ function($window, $interval, $filter, $uibModal) {
 	  func();
 	}, function() {
 	});
+  }
 
+  /*****************************************************************************
+   * メッセージ用モーダルウィンドウを表示する
+   * 
+   * @memberOf qFile
+   * @param {string} msg - 表示するメッセージ
+   ****************************************************************************/
+  function alarm(msg) {
+	var modal = $uibModal.open({
+	  templateUrl : "./template/alarm.html",
+	  controller : "modal",
+	  resolve : {
+		myMsg : function() {
+		  return {
+			msg : msg
+		  }
+		}
+	  }
+	});
   }
 
   /*****************************************************************************
@@ -340,6 +371,8 @@ function($window, $interval, $filter, $uibModal) {
    ****************************************************************************/
   function callMember(arr) {
 	var entryList = [];
+	var errorMsg = "";
+
 	angular.forEach(arr, function(obj) {
 
 	  // sourceが無い場合はプレイヤー自身とみなしてリストに追加
@@ -354,29 +387,43 @@ function($window, $interval, $filter, $uibModal) {
 		if (angular.isString(obj.source)) {
 		  // nameListが指定されている場合
 		  if (obj.source == "nameList") {
-			console.log("callup by nameList");
-			subEntryList = require(nameListFile);
+			try {
+			  subEntryList = JSON.parse(fs.readFileSync(nameListFile, 'utf-8'));
 
+			} catch (e) {
+			  if (e.code === "ENOENT") {
+				errorMsg += nameListFile + "がありません。\n";
+			  } else {
+				console.log(e);
+				errorMsg += nameListFile + "読み込み時にエラーが発生しました。\n";
+			  }
+			}
 			// ラウンド名が指定されている場合
 		  } else {
-			console.log("callup by " + obj.source);
-			subEntryList = require("./history/current/" + obj.source + ".json").players;
-			console.log(subEntryList);
+			var filename = "./history/current/" + obj.source + ".json";
+
+			try {
+			  subEntryList = JSON.parse(fs.readFileSync(filename, 'utf-8')).players;
+
+			} catch (e) {
+			  if (e.code === "ENOENT") {
+				errorMsg += filename + "がありません。\n";
+			  } else {
+				errorMsg += filename + "読み込み時にエラーが発生しました。\n";
+			  }
+			}
 		  }
 
 		  // sourceがArrayで指定されている場合
 		} else if (angular.isArray(obj.source)) {
-		  console.log("callup by array");
 		  subEntryList = callMember(obj.source);
 
 		  // sourceがObjectで指定されている場合
 		} else if (angular.isObject(obj.source)) {
-		  console.log("callup by object");
 		  subEntryList = callMember([ obj.source ]);
 		}
 
 		console.log(subEntryList);
-
 		// filterが指定されている場合
 		if (obj.hasOwnProperty('filter')) {
 		  subEntryList = angular.copy(subEntryList).filter(function(o) {
@@ -403,16 +450,12 @@ function($window, $interval, $filter, $uibModal) {
 		// propertyが指定されている場合
 		if (obj.hasOwnProperty('property')) {
 		  angular.forEach(obj.property, function(value, key) {
-			console.log(value.length, subEntryList.length);
 			for (var i = 0; i < value.length && i < subEntryList.length; i++) {
 			  var player = subEntryList[i];
 			  player[key] = value[i];
-			  console.log(player, key, value, i, player[key]);
 			}
 		  })
 		}
-
-		console.log(subEntryList);
 
 		angular.forEach(subEntryList, function(o) {
 		  entryList.push(angular.copy(o));
@@ -420,7 +463,12 @@ function($window, $interval, $filter, $uibModal) {
 	  }
 	});
 
-	return entryList;
+	if (errorMsg == "") {
+	  return entryList;
+	} else {
+	  alarm(errorMsg);
+	  return [];
+	}
 
 	// オペランドに応じた評価関数
 	function ev(a, b, opr) {
