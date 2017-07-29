@@ -324,6 +324,21 @@ app.config([ "$locationProvider", function($locationProvider) {
 	  /* sortPlayer - プレイヤー並び替え */
 	  $scope.sortPlayer = qCommon.sortPlayer;
 
+	  /* moveDown - メンバーを最下段に移動 */
+	  $scope.moveDown = function(index) {
+		for (var i = index; i <= 4; i++) {
+		  swapKey('name' + (i), 'name' + (i + 1));
+		  swapKey('handleName' + (i), 'handleName' + (i + 1));
+		  swapKey('torii' + (i), 'torii' + (i + 1));
+		}
+	  }
+
+	  function swapKey(key1, key2) {
+		var swap = $scope.selectPlayer[key2];
+		$scope.selectPlayer[key2] = $scope.selectPlayer[key1];
+		$scope.selectPlayer[key1] = swap;
+	  }
+
 	  /* modalOK - OKボタン押下 */
 	  $scope.modalOK = function() {
 		$uibModalInstance.close();

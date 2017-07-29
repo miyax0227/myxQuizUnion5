@@ -1,11 +1,11 @@
 [
 	{
-		"title": "7◯3×クイズ",
-		"maxRankDisplay": 2,
+		"title": "2Round : SuperNova",
+		"maxRankDisplay": 0,
 		"openRankArray": null,
-		"winningPoint": 7,
-		"losingPoint": 3,
-		"penalty": 8,
-		"tweetRoundTitle": "[7◯3×]"
+		"losingPoint": 4,
+		"penalty": 0,
+		"tweetRoundTitle": "[2R]",
+		"lots": [1, 2, 3, 4, 5, 6]
 	}
 ]

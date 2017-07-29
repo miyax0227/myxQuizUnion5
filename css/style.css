@@ -81,7 +81,7 @@ div.scoreBoard {
 div.title {
     position: absolute;
     top: 0px;
-    margin-left: 2%;
+    margin-left: calc(2% + 90px);
     font-size: 40px;
     font-family: "MigMix 1M";
     font-weight: bold;
@@ -101,17 +101,25 @@ div.timer {
 div.qCount {
     position: absolute;
     top: 45px;
-    margin-left: 2%;
-    font-size: 30px;
+    margin-left: calc(2% + 90px);
+    font-size: 40px;
     font-family: "MigMix 1M";
     font-weight: bold;
+}
+
+img.logo {
+    position: absolute;
+	width: 80px;
+	height: 80px;
+	left: 2%;
+	top: 10px;
 }
 
 hr.hr0 {
     position: absolute;
     top: 30px;
-    width: 96%;
-    margin-left: 2%;
+    width: calc(96% - 80px);
+    margin-left: calc(2% + 80px);
     margin-right: 2%;
     border: 0;
     height: 2px;

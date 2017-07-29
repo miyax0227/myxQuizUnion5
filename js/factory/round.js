@@ -206,7 +206,7 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 	  }
 
 	  function captureFunc() {
-		// 立ち上げ終了から2秒後に動作
+		// 立ち上げ終了から5秒後に動作
 		setTimeout(function() {
 		  // キャプチャ実行
 		  win.capturePage(function(img) {
@@ -217,7 +217,7 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 			// キャプチャ終了
 			scope.capturing = false;
 		  });
-		}, 2000);
+		}, 5000);
 	  }
 	}
   },

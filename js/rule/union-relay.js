@@ -37,14 +37,16 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	key : "o",
 	value : 0,
 	style : "number",
-	css : "o"
+	css : "o",
+	chance : true
   }, {
 	key : "x",
 	value : 0,
 	style : "number",
 	css : "x",
 	invisibleWhenZeroOrNull : true,
-	repeatChar : "×"
+	repeatChar : "×",
+	pinch : true
   }, {
 	key : "oo1",
 	css : "oo oo1",
@@ -267,6 +269,10 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	  } else {
 		player.debt = property.winningPoint - player.o;
 	  }
+	  
+	  // chance・pinchの計算
+	  player.chance = (player.debt == 1);
+	  player.pinch = (property.losingPoint - player.x == 1);
 
 	  // キーボード入力時の配列の紐付け ローリング等の特殊形式でない場合はこのままでOK
 	  // player.keyIndex = index;

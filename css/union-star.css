@@ -4,6 +4,7 @@
 }
 
 div.player div.name {
+    display: none;
     position: absolute;
     left: -25px;
     top: -100px;
@@ -18,9 +19,23 @@ div.player div.name {
     transform: translate(16px,-10px);
 }
 
+div.player div.nameLat {
+    position: absolute;
+    left: -200px;
+    top: -120px;
+    width: 600px;
+    text-align: left;
+    font-family: "MigMix 1M";
+    font-weight: bold;
+    letter-spacing: 0px;
+    font-size: 72px;
+    transform-origin: 0px 0px;
+    transform: translate(50px,0px);
+}
+
 div.player div.n {
     position: absolute;
-    left: -50px;
+    width: 300px;
     font-family: "MigMix 1M";
     font-weight: bold;
     letter-spacing: 0px;
@@ -30,25 +45,29 @@ div.player div.n {
 }
 
 div.player div.name1 {
-    top: 125px;
+    left: calc(0px + -50px);
+    top: calc(-160px + 175px);
 }
 div.player div.name2 {
-    top: 175px;
+    left: calc(152px + -50px);
+    top: calc(-50px + 175px);
 }
 div.player div.name3 {
-    top: 225px;
+    left: calc(94px + -50px);
+    top: calc(129px + 175px);
 }
 div.player div.name4 {
-    top: 275px;
+    left: calc(-95px + -50px);
+    top: calc(129px + 175px);
 }
 div.player div.name5 {
-    top: 325px;
+    left: calc(-153px + -50px);
+    top: calc(-50px + 175px);
 }
 
 div.player div.t {
     position: absolute;
-    left: -75px;
-    width: 150px;
+    width: 100px;
     text-align: center;
     letter-spacing: 3px;
     font-family: "STU XVIII";
@@ -57,19 +76,24 @@ div.player div.t {
 }
 
 div.player div.torii1 {
-    top: 150px;
+    left: calc(0px + -50px);
+    top: calc(-160px + 200px);
 }
 div.player div.torii2 {
-    top: 200px;
+    left: calc(152px + -50px);
+    top: calc(-50px + 200px);
 }
 div.player div.torii3 {
-    top: 250px;
+    left: calc(94px + -50px);
+    top: calc(129px + 200px);
 }
 div.player div.torii4 {
-    top: 300px;
+    left: calc(-95px + -50px);
+    top: calc(129px + 200px);
 }
 div.player div.torii5 {
-    top: 350px;
+    left: calc(-153px + -50px);
+    top: calc(-50px + 200px);
 }
 
 div.player div.open div.paperRank {
@@ -118,7 +142,7 @@ div.player div.o {
 }
 
 div.player div.o div.chance {
-	color:DodgerBlue;
+    color: DodgerBlue;
 }
 
 div.player div.winningPoint {
@@ -135,8 +159,9 @@ div.player div.winningPoint {
 }
 
 div.player div.oo {
+	display: none;
+	
     position: absolute;
-    left: -50px;
     width: 100px;
     text-align: center;
     font-family: "HGSｺﾞｼｯｸE";
@@ -148,19 +173,24 @@ div.player div.oo {
 }
 
 div.player div.oo1 {
-    top: 125px;
+    left: calc(0px + -50px);
+    top: calc(-160px + 175px);
 }
 div.player div.oo2 {
-    top: 175px;
+    left: calc(152px + -50px);
+    top: calc(-50px + 175px);
 }
 div.player div.oo3 {
-    top: 225px;
+    left: calc(94px + -50px);
+    top: calc(129px + 175px);
 }
 div.player div.oo4 {
-    top: 275px;
+    left: calc(-95px + -50px);
+    top: calc(129px + 175px);
 }
 div.player div.oo5 {
-    top: 325px;
+    left: calc(-153px + -50px);
+    top: calc(-50px + 175px);
 }
 
 div.player div.sl {
@@ -168,40 +198,44 @@ div.player div.sl {
 }
 
 div.player div.sl1 {
-    top: 125px;
+    left: calc(0px + -50px);
+    top: calc(-160px + 175px);
 }
 div.player div.sl2 {
-    top: 175px;
+    left: calc(152px + -50px);
+    top: calc(-50px + 175px);
 }
 div.player div.sl3 {
-    top: 225px;
+    left: calc(94px + -50px);
+    top: calc(129px + 175px);
 }
 div.player div.sl4 {
-    top: 275px;
+    left: calc(-95px + -50px);
+    top: calc(129px + 175px);
 }
 div.player div.sl5 {
-    top: 325px;
+    left: calc(-153px + -50px);
+    top: calc(-50px + 175px);
 }
 
 div.player div.sl img {
     position: absolute;
-    left: -50px;
-    -webkit-transition: 0.5s linear all;
+    left: 0px;
+    -webkit-transition: 0.2s linear all;
     transform: translate(0px, 0px);
     opacity: 1;
 }
 
 div.player div.sl img.ng-enter {
     position: absolute;
-    transform: translate(0px, -50px);
     opacity: 0;
 }
 
 div.player div.x {
     position: absolute;
-    left: -100px;
+    left: -150px;
     top: -165px;
-    width: 200px;
+    width: 300px;
     text-align: center;
     font-family: "HGSｺﾞｼｯｸE";
     font-weight: bold;
@@ -209,8 +243,8 @@ div.player div.x {
     font-size: 40px;
 }
 
-div.player div.x div.pinch{
-	color: Salmon;
+div.player div.x div.pinch {
+    color: Salmon;
 }
 
 div.player div.absent {
@@ -260,6 +294,7 @@ div.player div.status {
     position: absolute;
     left: -25px;
     top: -100px;
+    transform: scale(2.0,2.0) translate(-12px, 0px);
 }
 
 div.player div.status img.win {
@@ -389,73 +424,69 @@ div.player div.motion img.x.ng-enter.ng-enter-active {
 div.player div.action_o {
     position: absolute;
     left: -22px;
-    top: -100px;
+    top: 100px;
     opacity: 0.8;
 }
 
 div.player div.action_x {
     position: absolute;
     left: -22px;
-    top: 60px;
+    top: 160px;
     opacity: 0.8;
 }
 
 div.player div.action_win {
     position: absolute;
     left: -30px;
-    top: 110px;
+    top: 210px;
 }
 div.player div.action_lose {
     position: absolute;
     left: -10px;
-    top: 110px;
+    top: 210px;
 }
 div.player div.action_wait {
     position: absolute;
     left: 10px;
-    top: 110px;
+    top: 210px;
 }
 
 div.player div.action_sl1 {
     position: absolute;
-    left: -22px;
-    top: 125px;
     opacity: 0.8;
+    left: calc(0px + -22px);
+    top: calc(-160px + 200px);
 }
-
 div.player div.action_sl2 {
     position: absolute;
-    left: -22px;
-    top: 175px;
     opacity: 0.8;
+    left: calc(152px + -22px);
+    top: calc(-50px + 200px);
 }
-
 div.player div.action_sl3 {
     position: absolute;
-    left: -22px;
-    top: 225px;
     opacity: 0.8;
+    left: calc(94px + -22px);
+    top: calc(129px + 200px);
 }
-
 div.player div.action_sl4 {
     position: absolute;
-    left: -22px;
-    top: 275px;
     opacity: 0.8;
+    left: calc(-95px + -22px);
+    top: calc(129px + 200px);
 }
-
 div.player div.action_sl5 {
     position: absolute;
-    left: -22px;
-    top: 325px;
     opacity: 0.8;
+    left: calc(-153px + -22px);
+    top: calc(-50px + 200px);
 }
 
 div.player hr.hr1 {
     position: absolute;
     top: -140px;
-    left: -50px;
-    width: 100px;
+    left: -200px;
+    width: 400px;
     border: 0;
     height: 2px;
     background-image: -webkit-linear-gradient(left, rgba(255,255,255,0.5), rgba(255,255,255,1), rgba(255,255,255,0.5));
@@ -463,10 +494,16 @@ div.player hr.hr1 {
 
 div.player hr.hr2 {
     position: absolute;
-    top: 100px;
-    left: -50px;
-    width: 100px;
+    top: -40px;
+    left: -200px;
+    width: 400px;
     border: 0;
     height: 2px;
     background-image: -webkit-linear-gradient(left, rgba(255,255,255,0.5), rgba(255,255,255,1), rgba(255,255,255,0.5));
+}
+
+div.player div.path {
+    position: absolute;
+    top: 75px;
+    left: -105px;
 }

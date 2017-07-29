@@ -1,0 +1,15 @@
+<div class="path">
+  <svg x="0px" y="0px" width="210px" height="210px" viewBox="0 0 210 210" enable-background="new 0 0 210 210">
+    <line ng-if="player.oo1 == 1" fill="none" stroke="#FFFFFF" stroke-width="8" x1="5.022" y1="82.919" x2="204.373" y2="82.919"/>
+    <line ng-if="player.oo2 == 1" fill="none" stroke="#FFFFFF" stroke-width="8" x1="104.693" y1="10.502" x2="166.295" y2="200.09"/>
+    <line ng-if="player.oo3 == 1" fill="none" stroke="#FFFFFF" stroke-width="8" x1="204.373" y1="82.919" x2="43.094" y2="200.09"/>
+    <line ng-if="player.oo4 == 1" fill="none" stroke="#FFFFFF" stroke-width="8" x1="5.022" y1="82.919" x2="166.295" y2="200.09"/>
+    <line ng-if="player.oo5 == 1" fill="none" stroke="#FFFFFF" stroke-width="8" x1="104.694" y1="10.503" x2="43.095" y2="200.09"/>
+
+    <line ng-if="player.oo1 == 0 && (player.player == 5 || player.player == 2)" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="8 8" x1="5.022" y1="82.919" x2="204.373" y2="82.919"/>
+    <line ng-if="player.oo2 == 0 && (player.player == 1 || player.player == 3)" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="8 8" x1="104.693" y1="10.502" x2="166.295" y2="200.09"/>
+    <line ng-if="player.oo3 == 0 && (player.player == 2 || player.player == 4)" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="8 8" x1="204.373" y1="82.919" x2="43.094" y2="200.09"/>
+    <line ng-if="player.oo4 == 0 && (player.player == 3 || player.player == 5)" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="8 8" x1="5.022" y1="82.919" x2="166.295" y2="200.09"/>
+    <line ng-if="player.oo5 == 0 && (player.player == 4 || player.player == 1)" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="8 8" x1="104.694" y1="10.503" x2="43.095" y2="200.09"/>
+  </svg>
+</div>

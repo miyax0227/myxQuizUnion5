@@ -588,22 +588,22 @@ app
 	   * @memberOf qCommon
 	   * @param {object} item アイテム情報
 	   * @param {object} length 文字列長
+	   * @param {object} player プレイヤー情報
 	   * @return {object} CSSオブジェクト
 	   ************************************************************************/
-	  function getItemCSS(item, length) {
+	  function getItemCSS(item, length, player) {
+		var css = {};
+
 		if (item.hasOwnProperty('vtrans')) {
-		  return {
-			'transform' : 'scale(1,' + (item.vtrans / length) + ')',
-			'transform-origin' : 'inherit'
-		  };
+		  css.transform = 'scale(1,' + (item.vtrans / length) + ')';
+		  css["transform-origin"] = 'inherit';
 		}
 		if (item.hasOwnProperty('htrans')) {
-		  return {
-			'transform' : 'scale(' + (item.htrans / length) + ',1)',
-			'transform-origin' : 'inherit'
-		  };
+		  css.transform = 'scale(' + (item.htrans / length) + ',1)';
+		  css["transform-origin"] = 'inherit';
 		}
-		return null;
+
+		return css;
 	  }
 
 	  /*************************************************************************

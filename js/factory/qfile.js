@@ -424,16 +424,32 @@ function($window, $interval, $filter, $uibModal) {
 		}
 
 		console.log(subEntryList);
+
 		// filterが指定されている場合
 		if (obj.hasOwnProperty('filter')) {
 		  subEntryList = angular.copy(subEntryList).filter(function(o) {
-			return ev(o[obj.filter.param], obj.filter.crit, obj.filter.oper);
+			return ev(obj.filter.oper, o[obj.filter.param], obj.filter.crit, obj.filter.crit2);
 		  });
 		}
 
 		// orderが指定されている場合
 		if (obj.hasOwnProperty('order')) {
 		  subEntryList.sort(sortFunc(obj.order));
+		}
+
+		// randomが指定されている場合
+		if (obj.hasOwnProperty('random')) {
+		  angular.forEach(subEntryList, function(obj) {
+			obj._random = Math.random();
+		  });
+		  console.log(subEntryList);
+
+		  subEntryList.sort(sortFunc(["_random"]));
+
+		  angular.forEach(subEntryList, function(obj) {
+			delete obj._random;
+		  });
+		  
 		}
 
 		// profileが指定されている場合
@@ -471,7 +487,7 @@ function($window, $interval, $filter, $uibModal) {
 	}
 
 	// オペランドに応じた評価関数
-	function ev(a, b, opr) {
+	function ev(opr, a, b, c) {
 	  switch (opr) {
 	  case "==":
 		return a == b;
@@ -493,6 +509,9 @@ function($window, $interval, $filter, $uibModal) {
 		break;
 	  case "!=":
 		return a != b;
+		break;
+	  case "~":
+		return (b <= a) && (a <= c);
 		break;
 	  }
 	  return false;

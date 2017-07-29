@@ -4,6 +4,17 @@ var appName = "myxQuizMain";
 var app = angular.module(appName);
 
 /*******************************************************************************
+ * svg - ラウンド特有の表示テンプレート
+ ******************************************************************************/
+app.directive('svg', function() {
+  return {
+	restrict : 'A',
+	transclude : true,
+	templateUrl : '../../template/union-star.html'
+  }
+});
+
+/*******************************************************************************
  * rule - ラウンド特有のクイズのルール・画面操作の設定
  ******************************************************************************/
 app.factory('rule', [ 'qCommon', function(qCommon) {
@@ -16,6 +27,10 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 
   rule.judgement = judgement;
   rule.calc = calc;
+
+  // ルール特有の定数
+  var con = [ [], [ 3, 4 ], [ 4, 5 ], [ 5, 1 ], [ 1, 2 ], [ 2, 3 ] ];
+  var pnt = [ [], [ 5, 2 ], [ 1, 3 ], [ 2, 4 ], [ 3, 5 ], [ 4, 1 ] ];
 
   /*****************************************************************************
    * header - ルール固有のヘッダ
@@ -34,6 +49,10 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
    * items - ルール固有のアイテム
    ****************************************************************************/
   rule.items = [ {
+	key : "nameLat",
+	css : "nameLat",
+	htrans : 4.1
+  }, {
 	key : "o",
 	value : 0,
 	style : "number",
@@ -49,7 +68,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	pinch : true
   }, {
 	key : "player",
-	value : 1,
+	value : 0,
 	style : "number"
   }, {
 	key : "oo1",
@@ -143,36 +162,6 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
    ****************************************************************************/
   rule.actions = [
   /*****************************************************************************
-   * 正解時
-   ****************************************************************************/
-  {
-	name : "○",
-	css : "action_o",
-	button_css : "btn btn-primary btn-lg",
-	keyArray : "k1",
-	enable0 : function(player, players, header, property) {
-	  return (player.status == "normal" && !header.playoff);
-	},
-	action0 : function(player, players, header, property) {
-	  setMotion(player, "o");
-	  player.o++;
-	  player["oo" + player.player]++;
-
-	  angular.forEach(players, function(p) {
-		if (p != player && [ "win", "lose" ].indexOf(p.status) < 0) {
-		  rolling(p, property);
-		}
-	  });
-
-	  if (player["oo" + player.player] >= property.norma[player.player - 1]) {
-		rolling(player, property);
-	  }
-
-	  addQCount(players, header, property);
-	},
-	tweet : "o"
-  },
-  /*****************************************************************************
    * 誤答時
    ****************************************************************************/
   {
@@ -190,7 +179,6 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 		player.absent = property.penalty;
 		player.status = "preabsent";
 	  }
-	  rolling(player, property);
 	  addQCount(players, header, property);
 	},
 	tweet : "x"
@@ -202,53 +190,78 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	name : "1",
 	css : "action_sl1",
 	button_css : "btn btn-info",
-	enable0 : function() {
-	  return true;
+	enable0 : function(player) {
+	  return enable00(1, player);
 	},
-	action0 : function(player) {
-	  player.player = 1;
+	action0 : function(player, players, header, property) {
+	  action00(1, player, players, header, property);
 	}
   }, {
 	name : "2",
 	css : "action_sl2",
 	button_css : "btn btn-info",
-	enable0 : function() {
-	  return true;
+	enable0 : function(player) {
+	  return enable00(2, player);
 	},
-	action0 : function(player) {
-	  player.player = 2;
+	action0 : function(player, players, header, property) {
+	  action00(2, player, players, header, property);
 	}
   }, {
 	name : "3",
 	css : "action_sl3",
 	button_css : "btn btn-info",
-	enable0 : function() {
-	  return true;
+	enable0 : function(player) {
+	  return enable00(3, player);
 	},
-	action0 : function(player) {
-	  player.player = 3;
+	action0 : function(player, players, header, property) {
+	  action00(3, player, players, header, property);
 	}
   }, {
 	name : "4",
 	css : "action_sl4",
 	button_css : "btn btn-info",
-	enable0 : function() {
-	  return true;
+	enable0 : function(player) {
+	  return enable00(4, player);
 	},
-	action0 : function(player) {
-	  player.player = 4;
+	action0 : function(player, players, header, property) {
+	  action00(4, player, players, header, property);
 	}
   }, {
 	name : "5",
 	css : "action_sl5",
 	button_css : "btn btn-info",
-	enable0 : function() {
-	  return true;
+	enable0 : function(player) {
+	  return enable00(5, player);
 	},
-	action0 : function(player) {
-	  player.player = 5;
+	action0 : function(player, players, header, property) {
+	  action00(5, player, players, header, property);
 	}
   } ];
+
+  function enable00(p, player) {
+	return (player["sl" + p] == 1) && (player.status == "normal");
+  }
+
+  function action00(p, player, players, header, property) {
+	if (player.player == 0) {
+	  player.player = p;
+	  setMotion(player, "o");
+	  addQCount(players, header, property);
+
+	} else {
+	  angular.forEach(pnt, function(link, index) {
+		if (link.indexOf(p) >= 0 && link.indexOf(player.player) >= 0) {
+		  player["oo" + index] = 1;
+		}
+	  });
+	  player.o++;
+	  player.player = 0;
+	  setMotion(player, "o");
+	  addQCount(players, header, property);
+
+	}
+  }
+  ;
 
   /*****************************************************************************
    * global_actions - 全体に対する操作の設定
@@ -297,20 +310,19 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	  return (item.rank == 0);
 	}), function(player, i) {
 	  /* win条件 */
-	  var winningPoint;
-	  if (player.hasOwnProperty('winningPoint')) {
-		winningPoint = player.winningPoint;
-	  } else {
-		winningPoint = property.winningPoint;
-	  }
+	  var winningPoint = 5;
 
 	  if (player.o >= winningPoint) {
-		win(player, players, header, property);
-		player.o = property.winningPoint;
+		win(player, players.filter(function(p) {
+		  return p.lot == player.lot;
+		}), header, property);
+		player.o = winningPoint;
 	  }
 	  /* lose条件 */
 	  if (player.x >= property.losingPoint) {
-		lose(player, players, header, property);
+		lose(player, players.filter(function(p) {
+		  return p.lot == player.lot;
+		}), header, property);
 		player.x = property.losingPoint;
 	  }
 	});
@@ -325,6 +337,9 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   function calc(players, header, items, property) {
 	var pos = 0;
 	angular.forEach(players, function(player, index) {
+	  // 横向き名前
+	  player.nameLat = player.name;
+
 	  // 位置計算
 	  if (player.lot == header.nowLot) {
 		player.line = null;
@@ -339,55 +354,58 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 		player.keyIndex = -1;
 		player.position = 0;
 	  }
-
-	  // chance・pinchの計算
-	  var winningPoint;
-	  if (player.hasOwnProperty('winningPoint')) {
-		winningPoint = player.winningPoint;
-	  } else {
-		winningPoint = property.winningPoint;
-	  }
-
-	  player.chance = (winningPoint - player.o == 1);
+	  
+	  // pinch・chanceの計算
+	  player.chance = (player.o == 4) && (player.player != 0);
 	  player.pinch = (property.losingPoint - player.x == 1);
-
+	  
 	  // キーボード入力時の配列の紐付け ローリング等の特殊形式でない場合はこのままでOK
 	  // player.keyIndex = index;
 
 	});
 
-	angular.forEach(players, function(player, index) {
+	angular.forEach(players, function(player) {
 	  for (var i = 1; i <= 5; i++) {
-		if (player.player == i) {
-		  player["sl" + i] = 1;
+		// 1人目の正解者設定が無い場合の場合
+		if (player.player == 0) {
+		  // 未正解のリンクがある場合
+		  if (pnt.filter(function(p, index) {
+			return p.indexOf(i) >= 0 && player["oo" + index] == 0
+		  }).length > 0) {
+			// 解答権あり
+			player["sl" + i] = 1;
+
+			// 全てのリンクが正解済みの場合
+		  } else {
+			// 解答権無し
+			player["sl" + i] = 0;
+		  }
+
+		  // 1人目の正解者設定があり、自分が2人目の対象者に含まれる場合
+		} else if (con[player.player].indexOf(i) >= 0) {
+		  // そのリンクが未正解の場合
+		  if (pnt.filter(function(p, index) {
+			var pp = player.player;
+			return (p.indexOf(i) >= 0) && (p.indexOf(pp) >= 0) && (player["oo" + index] == 0);
+		  }).length > 0) {
+			// 解答権あり
+			player["sl" + i] = 1;
+
+			// そのリンクが正解済みの場合
+		  } else {
+			// 解答権無し
+			player["sl" + i] = 0;
+		  }
+
+		  // 1人目の正解者設定があり、自分が2人目の対象者に含まれない場合
 		} else {
+		  // 解答権なし
 		  player["sl" + i] = 0;
+
 		}
 	  }
 	});
 
-  }
-
-  function rolling(player, property) {
-	var playerNum = player.player;
-	var playerList = [];
-
-	for (var i = 1; i <= 5; i++) {
-	  if (playerNum < i && (player["oo" + i] < property.norma[i - 1])) {
-		playerList.push(i);
-	  }
-	}
-	for (var i = 1; i <= 5; i++) {
-	  if (playerNum >= i && (player["oo" + i] < property.norma[i - 1])) {
-		playerList.push(i);
-	  }
-	}
-
-	if (playerList.length == 0) {
-	  player.player = -1;
-	} else {
-	  player.player = playerList[0];
-	}
   }
 
   return rule;
