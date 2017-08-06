@@ -1,11 +1,11 @@
 <div class="player" ng-repeat="player in current.players as players" ng-style="getPlayerCSS(players,player, windowSize, lineProperty)">
 
   <div svg></div>
-  
+
   <div class="open" ng-if="! player.close">
     <div ng-repeat="item in items" ng-class="item.css" ng-if="item.hasOwnProperty('css') && (!item.hasOwnProperty('anonymous') || (anonymous == item.anonymous))">
-      <div ng-style="getItemCSS(item, player[item.key].length, player)" ng-class="{chance:item.chance&&player.chance ,pinch:item.pinch&&player.pinch}">
-        <div ng-style="getRankColorCSS(item, player[item.key])">
+      <div ng-style="getItemCSS(item, player[item.key].length, player)">
+        <div ng-style="getRankColorCSS(item, player[item.key])" ng-class="decoration(player, item)">
           {{getDisplayValue(item ,player[item.key])}}
         </div>
       </div>
@@ -15,8 +15,8 @@
   <div class="overRect" ng-if="player.close">
     <div class="overRectBlind"></div>
     <div ng-repeat="item in items" ng-class="item.css" ng-if="item.hasOwnProperty('close-css')">
-      <div ng-style="getItemCSS(item, player[item.key].length, player)" ng-class="{chance:item.chance&&player.chance ,pinch:item.pinch&&player.pinch}">
-        <div ng-style="getRankColorCSS(item, player[item.key])">
+      <div ng-style="getItemCSS(item, player[item.key].length, player)">
+        <div ng-style="getRankColorCSS(item, player[item.key])" ng-class="decoration(player, item)">
           {{getDisplayValue(item ,player[item.key])}}
         </div>
       </div>
@@ -24,8 +24,10 @@
   </div>
 
   <div ng-repeat="item in items" ng-class="item.css_img" ng-if="item.hasOwnProperty('css_img')">
-    <img ng-class="player[item.key]" ng-src="../../img/{{item.css_img_file[player[item.key]]}}" ng-if="item.css_img_file.hasOwnProperty(player[item.key]) && item.key != 'rank'"></img>
-    <img ng-class="rank" ng-src="../../img/{{item.css_img_file[player['rank']]}}" ng-if="item.css_img_file.hasOwnProperty(player['rank']) && item.key == 'rank' && player['rank'] <= property.maxRankDisplay"></img>
+    <div ng-class="decoration(player, item)">
+      <img ng-class="player[item.key]" ng-src="../../img/{{item.css_img_file[player[item.key]]}}" ng-if="item.css_img_file.hasOwnProperty(player[item.key]) && item.key != 'rank'"></img>
+      <img ng-class="rank" ng-src="../../img/{{item.css_img_file[player['rank']]}}" ng-if="item.css_img_file.hasOwnProperty(player['rank']) && item.key == 'rank' && player['rank'] <= property.maxRankDisplay"></img>
+    </div>
   </div>
   <div ng-repeat="action in actions" ng-class="action.css" ng-if="! viewMode && ! anonymous">
     <button ng-click="func_player_scope(action.action, player)" ng-class="action.button_css" ng-disabled="! func_player_scope(action.enable,player)">

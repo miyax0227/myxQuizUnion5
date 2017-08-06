@@ -13,6 +13,7 @@
 		"key": "name1"      ,
 		"style": "string",
 		"profile": true,
+		"repeat": ["name", 5],
 		"anonymous": false,
 		"css": "n name1",
 		"htrans": 3.7
@@ -20,6 +21,7 @@
 		"key": "handleName1",
 		"style": "string",
 		"profile": true,
+		"repeat": ["handleName", 5],
 		"anonymous": true ,
 		"css": "n name1",
 		"htrans": 3.7
@@ -27,12 +29,14 @@
 		"key": "torii1"     ,
 		"style": "number",
 		"profile": true,
+		"repeat": ["torii", 5],
 		"css": "t torii1",
-		"repeatChar":";"
+		"repeatChar": ";"
 	}, {
 		"key": "name2"      ,
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": false,
 		"css": "n name2",
 		"htrans": 3.7
@@ -40,6 +44,7 @@
 		"key": "handleName2",
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": true ,
 		"css": "n name2",
 		"htrans": 3.7
@@ -47,12 +52,14 @@
 		"key": "torii2"     ,
 		"style": "number",
 		"profile": true,
+		"repeat":false,
 		"css": "t torii2",
-		"repeatChar":";"
+		"repeatChar": ";"
 	}, {
 		"key": "name3"      ,
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": false,
 		"css": "n name3",
 		"htrans": 3.7
@@ -60,6 +67,7 @@
 		"key": "handleName3",
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": true ,
 		"css": "n name3",
 		"htrans": 3.7
@@ -67,12 +75,14 @@
 		"key": "torii3"     ,
 		"style": "number",
 		"profile": true,
+		"repeat":false,
 		"css": "t torii3",
-		"repeatChar":";"
+		"repeatChar": ";"
 	}, {
 		"key": "name4"      ,
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": false,
 		"css": "n name4",
 		"htrans": 3.7
@@ -80,6 +90,7 @@
 		"key": "handleName4",
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": true ,
 		"css": "n name4",
 		"htrans": 3.7
@@ -87,12 +98,14 @@
 		"key": "torii4"     ,
 		"style": "number",
 		"profile": true,
+		"repeat":false,
 		"css": "t torii4",
-		"repeatChar":";"
+		"repeatChar": ";"
 	}, {
 		"key": "name5"      ,
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": false,
 		"css": "n name5",
 		"htrans": 3.7
@@ -100,6 +113,7 @@
 		"key": "handleName5",
 		"style": "string",
 		"profile": true,
+		"repeat":false,
 		"anonymous": true ,
 		"css": "n name5",
 		"htrans": 3.7
@@ -107,8 +121,9 @@
 		"key": "torii5"     ,
 		"style": "number",
 		"profile": true,
+		"repeat":false,
 		"css": "t torii5",
-		"repeatChar":";"
+		"repeatChar": ";"
 	}, {
 		"key": "motion",
 		"style": "string",

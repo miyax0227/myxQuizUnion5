@@ -18,6 +18,7 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
   round.global_actions = rule.global_actions;
   round.items = rule.items;
   round.head = rule.head;
+  round.decoration = decoration;
 
   /*****************************************************************************
    * 判定関数
@@ -88,6 +89,25 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 	rule.calc(players, header, items, property);
 
   }
+
+  /*****************************************************************************
+   * 装飾用クラスの判定・返却
+   * 
+   * @memberOf round
+   * @param {array} player - プレイヤー情報
+   * @param {array} item - アイテム情報
+   * @return {array} - 装飾用クラスのリスト
+   ****************************************************************************/
+  function decoration(player, item) {
+	var deco = [];
+	angular.forEach(rule.decor, function(d) {
+	  if (player[d] && item[d]) {
+		deco.push(d);
+	  }
+	})
+	return deco;
+  }
+
   /*****************************************************************************
    * actions - プレイヤー毎に設定する操作の設定
    ****************************************************************************/
@@ -185,39 +205,45 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 	  // キャプチャ中
 	  scope.capturing = true;
 
-	  var fs = require('fs');
-	  var BrowserWindow = require('electron').remote.BrowserWindow;
+	  var fs;
+	  var BrowserWindow;
+	  try {
+		fs = require('fs');
+		BrowserWindow = require('electron').remote.BrowserWindow;
 
-	  // キャプチャ用ウィンドウを生成
-	  var win = null;
-	  win = new BrowserWindow({
-		width : scope.captureWindowSize.width,
-		height : scope.captureWindowSize.height,
-		y : scope.captureWindowSize.top,
-		x : scope.captureWindowSize.left,
-		title : "Capture"
-	  });
-	  win.loadURL(__dirname + '/board.html?view=true&anonymous=true');
-	  // キャプチャ用ウィンドウの立ち上げ終了時にイベントを検知する
-	  win.webContents.on('did-finish-load', captureFunc);
+		// キャプチャ用ウィンドウを生成
+		var win = null;
+		win = new BrowserWindow({
+		  width : scope.captureWindowSize.width,
+		  height : scope.captureWindowSize.height,
+		  y : scope.captureWindowSize.top,
+		  x : scope.captureWindowSize.left,
+		  title : "Capture"
+		});
+		win.loadURL(__dirname + '/board.html?view=true&anonymous=true');
+		// キャプチャ用ウィンドウの立ち上げ終了時にイベントを検知する
+		win.webContents.on('did-finish-load', captureFunc);
 
-	  function dateString() {
-		return $filter('date')(new Date(), 'yyyyMMddHHmmss.sss');
-	  }
+		function dateString() {
+		  return $filter('date')(new Date(), 'yyyyMMddHHmmss.sss');
+		}
 
-	  function captureFunc() {
-		// 立ち上げ終了から5秒後に動作
-		setTimeout(function() {
-		  // キャプチャ実行
-		  win.capturePage(function(img) {
-			// png形式で保存
-			fs.writeFileSync(__dirname + "/../../twitter/" + dateString() + ".png", img.toPng());
-			// キャプチャ用ウィンドウを閉じる
-			win.close();
-			// キャプチャ終了
-			scope.capturing = false;
-		  });
-		}, 5000);
+		function captureFunc() {
+		  // 立ち上げ終了から5秒後に動作
+		  setTimeout(function() {
+			// キャプチャ実行
+			win.capturePage(function(img) {
+			  // png形式で保存
+			  fs.writeFileSync(__dirname + "/../../twitter/" + dateString() + ".png", img.toPng());
+			  // キャプチャ用ウィンドウを閉じる
+			  win.close();
+			  // キャプチャ終了
+			  scope.capturing = false;
+			});
+		  }, 5000);
+		}
+	  } catch (e) {
+		console.log('fs is not supported.');
 	  }
 	}
   },
@@ -617,25 +643,23 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 	};
   });
 
-  
-  
   /*****************************************************************************
    * global_actions - 全体に対する操作の設定(ラッピング)
    ****************************************************************************/
   round.global_actions.map(function(global_action) {
-	
-	if(angular.isUndefined(global_action.indexes)) {
+
+	if (angular.isUndefined(global_action.indexes)) {
 	  if (angular.isDefined(global_action.indexes0)) {
-		global_action.indexes = function(scope){
+		global_action.indexes = function(scope) {
 		  var players = scope.current.players;
 		  var header = scope.current.header;
 		  var property = scope.property;
 		  return global_action.indexes0(players, header, property);
 		}
 	  }
-	  
+
 	}
-	
+
 	if (angular.isUndefined(global_action.enable)) {
 	  if (angular.isDefined(global_action.enable0)) {
 		global_action.enable = function(scope) {

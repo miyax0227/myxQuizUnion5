@@ -31,7 +31,7 @@ function($window, $interval, $filter, $uibModal) {
   const
   shell = require('electron').shell;
   const
-  profiles = require('./json/item.json').filter(function(item) {
+  profiles = require(__dirname + '/json/item.json').filter(function(item) {
 	return item.hasOwnProperty('profile') && item.profile
   }).map(function(item) {
 	return item.key
@@ -81,7 +81,7 @@ function($window, $interval, $filter, $uibModal) {
 		// callable - 招集可能か
 		callable : false,
 
-		// click - ラウンド目クリック時の処理（ウィンドウオープン）
+		// click - ラウンド名クリック時の処理（ウィンドウオープン）
 		click : function() {
 		  $window.open("./round/" + file + "/board.html", file + " - control", windowParameter);
 		},
@@ -99,7 +99,7 @@ function($window, $interval, $filter, $uibModal) {
 
 		// callUp0 - 招集処理
 		callUp0 : function(scope) {
-		  var filename = './round/' + file + "/entry.json";
+		  var filename = __dirname + '/round/' + file + "/entry.json";
 		  var entryList = callMember(JSON.parse(fs.readFileSync(filename, 'utf-8')));
 
 		  if (entryList.length == 0) {
@@ -400,7 +400,7 @@ function($window, $interval, $filter, $uibModal) {
 			}
 			// ラウンド名が指定されている場合
 		  } else {
-			var filename = "./history/current/" + obj.source + ".json";
+			var filename = __dirname + "/history/current/" + obj.source + ".json";
 
 			try {
 			  subEntryList = JSON.parse(fs.readFileSync(filename, 'utf-8')).players;
@@ -444,12 +444,12 @@ function($window, $interval, $filter, $uibModal) {
 		  });
 		  console.log(subEntryList);
 
-		  subEntryList.sort(sortFunc(["_random"]));
+		  subEntryList.sort(sortFunc([ "_random" ]));
 
 		  angular.forEach(subEntryList, function(obj) {
 			delete obj._random;
 		  });
-		  
+
 		}
 
 		// profileが指定されている場合

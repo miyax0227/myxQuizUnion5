@@ -81,7 +81,7 @@ div.scoreBoard {
 div.title {
     position: absolute;
     top: 0px;
-    margin-left: calc(2% + 90px);
+    margin-left: calc(2% + 138px);
     font-size: 40px;
     font-family: "MigMix 1M";
     font-weight: bold;
@@ -101,7 +101,7 @@ div.timer {
 div.qCount {
     position: absolute;
     top: 45px;
-    margin-left: calc(2% + 90px);
+    margin-left: calc(2% + 138px);
     font-size: 40px;
     font-family: "MigMix 1M";
     font-weight: bold;
@@ -109,7 +109,7 @@ div.qCount {
 
 img.logo {
     position: absolute;
-	width: 80px;
+	width: 128px;
 	height: 80px;
 	left: 2%;
 	top: 10px;
@@ -118,8 +118,8 @@ img.logo {
 hr.hr0 {
     position: absolute;
     top: 30px;
-    width: calc(96% - 80px);
-    margin-left: calc(2% + 80px);
+    width: calc(96% - 128px);
+    margin-left: calc(2% + 128px);
     margin-right: 2%;
     border: 0;
     height: 2px;
@@ -130,7 +130,8 @@ div.victory {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.9);
+    color:black;
 }
 
 div.victory.ng-enter {
@@ -158,7 +159,7 @@ div.victory h1.first {
     position: absolute;
     width: 100%;
     text-align: center;
-    margin-top: 25%;
+    margin-top: 20%;
     font-family: "MigMix 1M";
     font-weight: bold;
     font-size: 100px;
@@ -168,10 +169,19 @@ div.victory h1.name {
     position: absolute;
     width: 100%;
     text-align: center;
-    margin-top: 40%;
+    margin-top: 30%;
     font-family: "MigMix 1M";
     font-weight: bold;
     font-size: 100px;
+}
+
+div.victory h1.member {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 40%;
+    font-family: "MigMix 1M";
+    font-weight: bold;
 }
 
 div.player {

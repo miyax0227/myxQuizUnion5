@@ -3,85 +3,21 @@
     <form>
       <table class="table table-condensed">
         <tr>
-          <!--
-          <th ng-repeat="item in items | with: 'profile'"> {{item.key}} </th>
-          -->
-          <th>entryNo</th>
-          <th>name</th>
-          <th>name x</th>
-          <th>handleName x</th>
-          <th>torii x</th>
-          <th>move</th>
+          <th ng-repeat="item in items | with: 'profile'" ng-if="! item.hasOwnProperty('repeat')"> {{item.key}} </th>
+          <th ng-repeat="item in items | with: 'profile'" ng-if="item.repeat"> {{item.key}}&nbsp;x </th>
         </tr>
+        
         <tr>
-          <!--
-          <td ng-repeat="item in items | with: 'profile'">
+          <td ng-repeat="item in items | with: 'profile'" ng-if="! item.hasOwnProperty('repeat')">
           <input class="form-control" ng-model="selectPlayer[item.key]" ng-init="selectPlayer[item.key]=''">
           </input> </td>
-          -->
-          <td rowspan="5">
-          <input class="form-control" ng-model="selectPlayer['entryNo']" ng-init="selectPlayer['entryNo']=''">
-          </input></td>
-          <td rowspan="5">
-          <input class="form-control" ng-model="selectPlayer['name']" ng-init="selectPlayer['name']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['name1']" ng-init="selectPlayer['name1']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['handleName1']" ng-init="selectPlayer['handleName1']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['torii1']" ng-init="selectPlayer['torii1']=''">
-          </input></td>
-          <td><a href="#" ng-click="moveDown(1)">▼</a></td>
-        </tr>
-        <tr>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['name2']" ng-init="selectPlayer['name2']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['handleName2']" ng-init="selectPlayer['handleName2']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['torii2']" ng-init="selectPlayer['torii2']=''">
-          </input></td><td><a href="#" ng-click="moveDown(2)">▼</a></td>
 
-        </tr>
-        <tr>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['name3']" ng-init="selectPlayer['name3']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['handleName3']" ng-init="selectPlayer['handleName3']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['torii3']" ng-init="selectPlayer['torii3']=''">
-          </input></td><td><a href="#" ng-click="moveDown(3)">▼</a></td>
-
-        </tr>
-        <tr>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['name4']" ng-init="selectPlayer['name4']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['handleName4']" ng-init="selectPlayer['handleName4']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['torii4']" ng-init="selectPlayer['torii4']=''">
-          </input></td><td><a href="#" ng-click="moveDown(4)">▼</a></td>
-
-        </tr>
-        <tr>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['name5']" ng-init="selectPlayer['name5']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['handleName5']" ng-init="selectPlayer['handleName5']=''">
-          </input></td>
-          <td>
-          <input class="form-control" ng-model="selectPlayer['torii5']" ng-init="selectPlayer['torii5']=''">
-          </input></td>
+          <td ng-repeat="item in items | with: 'profile'" ng-if="item.repeat">
+          	<span ng-repeat="i in naturalNumberList(item.repeat[1])">
+            <input class="form-control"  ng-model="selectPlayer[item.repeat[0]+i]" ng-init="selectPlayer[item.repeat[0]+i]=''">
+            </input>
+            <a href="#" ng-click="moveDown(i, items)">▼</a>
+            </span></td>
         </tr>
       </table>
       <div class="text-center">

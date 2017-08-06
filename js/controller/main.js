@@ -178,6 +178,9 @@ app.config([ "$locationProvider", function($locationProvider) {
 			qCommon.changePlayer($scope, player);
 		  };
 
+		  /* decoration - 装飾用クラスリストを取得する */
+		  $scope.decoration = round.decoration;
+
 		  /*********************************************************************
 		   * 読み込み対象のファイルを全て読み込み終えたら実行される処理（事実上のメイン処理）
 		   ********************************************************************/
@@ -238,9 +241,10 @@ app.config([ "$locationProvider", function($locationProvider) {
 			  var initCurrent = {};
 
 			  // 履歴ファイルの存在確認
-			  var fs = require('fs');
+			  var fs;
 			  try {
 				// ファイルが存在する場合
+				fs = require('fs');
 				initCurrent = JSON.parse(fs.readFileSync(qCommon.getHistoryFileName(), 'utf-8'));
 				qCommon.refreshCurrent(initCurrent, $scope);
 			  } catch (e) {
@@ -251,7 +255,12 @@ app.config([ "$locationProvider", function($locationProvider) {
 				initCurrent.header.tweets = [];
 				// プレイヤー部分の初期化
 				var entryFileName = qCommon.getEntryFileName();
-				var entryPlayers = JSON.parse(fs.readFileSync(entryFileName, 'utf-8'));
+				var entryPlayers;
+				try {
+				  entryPlayers = JSON.parse(fs.readFileSync(entryFileName, 'utf-8'));
+				} catch (e) {
+				  entryPlayers = strs[1][1];
+				}
 				initCurrent.players = qCommon.initPlayers(entryPlayers, $scope.items);
 				qCommon.refreshCurrent(initCurrent, $scope);
 			  }
@@ -324,13 +333,22 @@ app.config([ "$locationProvider", function($locationProvider) {
 	  /* sortPlayer - プレイヤー並び替え */
 	  $scope.sortPlayer = qCommon.sortPlayer;
 
+	  /* naturalNumberList - 自然数リスト生成 */
+	  $scope.naturalNumberList = function(n) {
+		var arr = Array.from(Array(n + 1).keys());
+		arr.shift();
+		return arr;
+	  }
+
 	  /* moveDown - メンバーを最下段に移動 */
-	  $scope.moveDown = function(index) {
-		for (var i = index; i <= 4; i++) {
-		  swapKey('name' + (i), 'name' + (i + 1));
-		  swapKey('handleName' + (i), 'handleName' + (i + 1));
-		  swapKey('torii' + (i), 'torii' + (i + 1));
-		}
+	  $scope.moveDown = function(index, items) {
+		angular.forEach(items, function(item) {
+		  if (item.repeat) {
+			for (var i = index; i <= item.repeat[1] - 1; i++) {
+			  swapKey(item.repeat[0] + (i), item.repeat[0] + (i + 1));
+			}
+		  }
+		})
 	  }
 
 	  function swapKey(key1, key2) {

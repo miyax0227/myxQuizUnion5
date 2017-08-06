@@ -793,7 +793,11 @@ app
 	   * @return {string} 履歴ファイル名
 	   ************************************************************************/
 	  function getHistoryFileName() {
-		return __dirname + '/../../history/current/' + getRoundName() + '.json';
+		try {
+		  return __dirname + '/../../history/current/' + getRoundName() + '.json';
+		} catch (e) {
+		  return '../../history/current/' + getRoundName() + '.json';
+		}
 	  }
 
 	  /*************************************************************************
@@ -803,7 +807,11 @@ app
 	   * @return {string} 履歴ファイル名
 	   ************************************************************************/
 	  function getEntryFileName() {
-		return __dirname + '/../../history/current/' + getRoundName() + '-entry.json';
+		try {
+		  return __dirname + '/../../history/current/' + getRoundName() + '-entry.json';
+		} catch (e) {
+		  return '../../history/current/' + getRoundName() + '-entry.json';
+		}
 	  }
 
 	  /*************************************************************************
@@ -816,8 +824,11 @@ app
 		function dateString() {
 		  return $filter('date')(new Date(), 'yyyyMMddHHmmss.sss');
 		}
-
-		return __dirname + '/../../twitter/' + dateString() + "_" + getRoundName() + '.txt';
+		try {
+		  return __dirname + '/../../twitter/' + dateString() + "_" + getRoundName() + '.txt';
+		} catch (e) {
+		  return '../../twitter/' + dateString() + "_" + getRoundName() + '.txt';
+		}
 	  }
 
 	  /*************************************************************************
@@ -906,7 +917,7 @@ app
 		}).length == 1) {
 		  return scope.current.players.filter(function(player) {
 			return player.rank == 1;
-		  })[0].name;
+		  })[0];
 		} else {
 		  return null;
 		}

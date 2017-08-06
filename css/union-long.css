@@ -1,6 +1,6 @@
 @font-face {
     font-family: "STU XVIII";
-    src: url(../font/STU XVIII.ttf);
+    src: url("../font/STU XVIII.ttf");
 }
 
 div.player div.name {
