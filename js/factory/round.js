@@ -467,7 +467,9 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 
 		// ボーダー上のプレイヤーの優先順位キー
 		var keyPriority = Math.min.apply(null, players.filter(function(player) {
-		  return ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var statusBool = ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var lotBool = (!header.hasOwnProperty("nowLot")) || (header.nowLot == player.lot);
+		  return statusBool && lotBool;
 		}).map(function(player) {
 		  return player[priority];
 		}));
@@ -484,7 +486,9 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 
 		// ボーダー上のプレイヤーと比較同位のプレイヤーリストを取得
 		borderPlayers = players.filter(function(player) {
-		  return ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var statusBool = ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var lotBool = (!header.hasOwnProperty("nowLot")) || (header.nowLot == player.lot);
+		  return statusBool && lotBool;
 		}).filter(function(player) {
 		  return (qCommon.playerSortOn(scope.items.filter(function(item) {
 			return (item.key == priority);
@@ -559,7 +563,9 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 
 		// ボーダー上のプレイヤーの優先順位キー
 		var keyPriority = Math.max.apply(null, players.filter(function(player) {
-		  return ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var statusBool = ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var lotBool = (!header.hasOwnProperty("nowLot")) || (header.nowLot == player.lot);
+		  return statusBool && lotBool;
 		}).map(function(player) {
 		  return player[priority];
 		}));
@@ -576,7 +582,9 @@ app.factory('round', [ 'qCommon', 'rule', '$filter', function(qCommon, rule, $fi
 
 		// ボーダー上のプレイヤーと比較同位のプレイヤーリストを取得
 		borderPlayers = players.filter(function(player) {
-		  return ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var statusBool = ([ "normal", "wait", "absent" ].indexOf(player.status) >= 0);
+		  var lotBool = (!header.hasOwnProperty("nowLot")) || (header.nowLot == player.lot);
+		  return statusBool && lotBool;
 		}).filter(function(player) {
 		  return (qCommon.playerSortOn(scope.items.filter(function(item) {
 			return (item.key == priority);

@@ -1,0 +1,236 @@
+@mixin score-div($fontsize:40px){
+	font-family: "MigMix 1M";
+	font-weight: bold;
+	position: absolute;
+    font-size: $fontsize;
+}
+
+@font-face {
+    font-family: "MigMix 1M";
+    src: url("../font/migmix-1m-regular.ttf");
+    src: url("../font/migmix-1m-bold.ttf");
+}
+
+@font-face {
+    font-family: "HGSｺﾞｼｯｸE";
+}
+
+body {
+    overflow: hidden;
+    background-color: black;
+    color: white;
+}
+
+.number {
+    text-align: right;
+}
+
+div.modal {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    color: black;
+}
+
+table.players {
+	th {
+    	text-align: center;
+	}
+	
+	td {
+		&.index {
+    		text-align: center;
+		}
+		&.profile {
+		    text-align: center;
+		    width: 150px;
+		}
+		&#status {
+		    width: 100px;
+		}
+		&#add, &#del, &#index {
+		    width: 20px;
+		}
+	}
+	
+	tr {
+		&.ng-enter {
+		    -webkit-transition: 0.2s linear all;
+		    opacity: 0;
+		}
+		
+		&.ng-enter.ng-enter-active {
+		    opacity: 1;
+		}
+		
+		&.ng-leave {
+		    -webkit-transition: 0.2s linear all;
+		    opacity: 1;
+		}
+		
+		&.ng-leave.ng-leave-active {
+		    opacity: 0;
+		}
+	}
+}
+
+div.scoreboard {
+	img.logo {
+	    position: absolute;
+	    width: 128px;
+	    height: 80px;
+	    left: 2%;
+	    top: 10px;
+	}
+	
+	div.title{
+		@include score-div;
+	    top: 0px;
+    	margin-left: calc(2% + 138px);
+	}
+	
+	div.timer{
+		@include score-div;
+	    top: 0px;
+	    width: 96%;
+	    margin-left: 2%;
+	    text-align: right;
+	}
+
+	div.qCount {
+		@include score-div;
+	    top: 45px;
+	    margin-left: calc(2% + 138px);
+	}
+	
+	hr.hr0 {
+	    position: absolute;
+	    top: 30px;
+	    width: calc(96% - 128px);
+	    margin-left: calc(2% + 128px);
+	    margin-right: 2%;
+	    border: 0;
+	    height: 2px;
+	    background-image: -webkit-linear-gradient(left,rgba(255,255,255,255), rgba(255,255,255,0.5));
+	}
+	
+	div.victory {
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    background-color: rgba(255,255,255,0.9);
+	    color: black;
+	    
+	    &.ng-enter {
+		    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 3s;
+		    opacity: 0;
+		    -webkit-filter: blur(30px);
+		}
+		
+		&.ng-enter-active {
+		    opacity: 1;
+		    -webkit-filter: blur(0px);
+		}
+		
+		h1{
+		    width: 100%;
+		    text-align: center;
+			
+			&.cupTitle {
+				@include score-div(100px);
+			    margin-top: 10%;
+			}
+			
+			&.first{
+				@include score-div(100px);
+ 				margin-top: 20%;
+			}
+			
+			&.name{
+				@include score-div(100px);
+ 				margin-top: 30%;				
+			}
+			
+			&.member{
+				@include score-div;
+    			margin-top: 40%;
+			}
+		}
+	}
+}
+
+div.player {
+    width: 200px;
+    height: 1000px;
+    transition: 1s;
+    transform-origin: 0px 0px;
+    
+    &.ng-enter, &.ng-leave {
+    	transition: 0s;
+    }
+    
+    div.open{
+	    position: absolute;
+	    width: 200px;
+	    height: 1000px;
+		transform-origin: 0px 0px;
+	    
+	    &.ng-enter {
+			transition: all cubic-bezier(0.6, 0, 0.6, 0) 0.5s;
+		    transform: rotateY(-90deg);
+		    opacity: 0;
+	    }
+    	
+    	&.ng-enter.ng-enter-active {
+		    transform: rotateY(0deg);
+		    opacity: 1;
+		}
+    }
+    
+    div.overRect {
+	    position: absolute;
+	    width: 200px;
+	    height: 1000px;	
+		transform-origin: 0px 0px;
+	    
+		&.ng-leave {
+		    transition: all cubic-bezier(0.4, 1, 0.4, 1) 0.5s;
+		    transform: rotateY(0deg);
+		    opacity: 1;
+		}
+		
+		&.ng-leave.ng-leave-active {
+		    transform: rotateY(90deg);
+		    opacity: 0;
+		}
+		
+	    div.overRectBlind {
+		    position: absolute;
+		    width: 60px;
+		    height: 250px;
+		    left: -30px;
+		    top: -125px;
+		    background-color: rgba(127,127,127,1);
+		}
+    }
+}
+
+div.global_actions {
+    position: absolute;
+    left: 0px;
+    top: calc(100% - 120px);
+}
+
+div.timer_actions {
+    position: absolute;
+    right: 2%;
+    top: 15px;
+}
+
+.modal-dialog {
+    width: 1200px;
+}
+
+.container {
+    width: 750px
+}
