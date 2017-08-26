@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "STU XVIII";
   src: url("../font/STU XVIII.ttf");
@@ -280,397 +279,197 @@ div.player div.winningPoint {
   -webkit-user-select: none;
 }
 
-div.player hr.hr1 {
+div.lot1 {
+  font-family: "MigMix 1M";
+  font-weight: bold;
   position: absolute;
-  top: -140px;
-  left: -200px;
-  width: 400px;
-  border: 0;
-  height: 2px;
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5), white, rgba(255, 255, 255, 0.5));
+  font-size: 48px;
+  top: 15%;
+  left: 5.2%;
+  text-align: center;
+}
+
+div.lot2 {
+  font-family: "MigMix 1M";
+  font-weight: bold;
+  position: absolute;
+  font-size: 48px;
+  top: 15%;
+  left: 25.2%;
+  text-align: center;
+}
+
+div.lot3 {
+  font-family: "MigMix 1M";
+  font-weight: bold;
+  position: absolute;
+  font-size: 48px;
+  top: 15%;
+  left: 45.2%;
+  text-align: center;
+}
+
+div.lot4 {
+  font-family: "MigMix 1M";
+  font-weight: bold;
+  position: absolute;
+  font-size: 48px;
+  top: 15%;
+  left: 65.2%;
+  text-align: center;
+}
+
+div.lot5 {
+  font-family: "MigMix 1M";
+  font-weight: bold;
+  position: absolute;
+  font-size: 48px;
+  top: 15%;
+  left: 85.2%;
+  text-align: center;
+}
+
+div.player hr.hr1 {
+  display: none;
 }
 
 div.player hr.hr2 {
-  position: absolute;
-  top: -40px;
-  left: -200px;
-  width: 400px;
-  border: 0;
-  height: 2px;
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5), white, rgba(255, 255, 255, 0.5));
+  display: none;
 }
 
 div.player div.name {
   display: none;
 }
 
-div.player div.name1 {
+div.player div.nameLat {
   position: absolute;
-  left: -50px;
-  top: 15px;
-  font-size: 24px;
+  left: -100px;
+  top: 0px;
+  font-size: 36px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  transform-origin: -5px 0px;
+  transform: translate(25px, 15px);
+}
+
+div.player div.name1 {
+  display: none;
 }
 
 div.player div.torii1 {
-  position: absolute;
-  left: -50px;
-  top: 40px;
-  width: 100px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.oo1 {
   display: none;
-  position: absolute;
-  left: -50px;
-  top: 15px;
-  width: 100px;
-  font-size: 40px;
-  font-family: "HGSｺﾞｼｯｸE";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  color: dodgerblue;
 }
 
 div.player div.sl1 img {
-  position: absolute;
-  left: -50px;
-  top: 15px;
-}
-
-div.player div.sl1 img.ng-enter {
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
-  opacity: 0;
-}
-
-div.player div.sl1 img.ng-enter.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: rotateX(0deg);
-  transform: translate(0px, 0px);
-  transform: scale(1, 1);
+  display: none;
 }
 
 div.player div.action_sl1 {
-  position: absolute;
-  left: -22px;
-  top: 40px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.name2 {
-  position: absolute;
-  left: 102px;
-  top: 125px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  display: none;
 }
 
 div.player div.torii2 {
-  position: absolute;
-  left: 102px;
-  top: 150px;
-  width: 100px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.oo2 {
   display: none;
-  position: absolute;
-  left: 102px;
-  top: 125px;
-  width: 100px;
-  font-size: 40px;
-  font-family: "HGSｺﾞｼｯｸE";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  color: dodgerblue;
 }
 
 div.player div.sl2 img {
-  position: absolute;
-  left: 102px;
-  top: 125px;
-}
-
-div.player div.sl2 img.ng-enter {
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
-  opacity: 0;
-}
-
-div.player div.sl2 img.ng-enter.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: rotateX(0deg);
-  transform: translate(0px, 0px);
-  transform: scale(1, 1);
+  display: none;
 }
 
 div.player div.action_sl2 {
-  position: absolute;
-  left: 130px;
-  top: 150px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.name3 {
-  position: absolute;
-  left: 44px;
-  top: 304px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  display: none;
 }
 
 div.player div.torii3 {
-  position: absolute;
-  left: 44px;
-  top: 329px;
-  width: 100px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.oo3 {
   display: none;
-  position: absolute;
-  left: 44px;
-  top: 304px;
-  width: 100px;
-  font-size: 40px;
-  font-family: "HGSｺﾞｼｯｸE";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  color: dodgerblue;
 }
 
 div.player div.sl3 img {
-  position: absolute;
-  left: 44px;
-  top: 304px;
-}
-
-div.player div.sl3 img.ng-enter {
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
-  opacity: 0;
-}
-
-div.player div.sl3 img.ng-enter.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: rotateX(0deg);
-  transform: translate(0px, 0px);
-  transform: scale(1, 1);
+  display: none;
 }
 
 div.player div.action_sl3 {
-  position: absolute;
-  left: 72px;
-  top: 329px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.name4 {
-  position: absolute;
-  left: -145px;
-  top: 304px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  display: none;
 }
 
 div.player div.torii4 {
-  position: absolute;
-  left: -145px;
-  top: 329px;
-  width: 100px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.oo4 {
   display: none;
-  position: absolute;
-  left: -145px;
-  top: 304px;
-  width: 100px;
-  font-size: 40px;
-  font-family: "HGSｺﾞｼｯｸE";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  color: dodgerblue;
 }
 
 div.player div.sl4 img {
-  position: absolute;
-  left: -145px;
-  top: 304px;
-}
-
-div.player div.sl4 img.ng-enter {
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
-  opacity: 0;
-}
-
-div.player div.sl4 img.ng-enter.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: rotateX(0deg);
-  transform: translate(0px, 0px);
-  transform: scale(1, 1);
+  display: none;
 }
 
 div.player div.action_sl4 {
-  position: absolute;
-  left: -117px;
-  top: 329px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.name5 {
-  position: absolute;
-  left: -203px;
-  top: 125px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  display: none;
 }
 
 div.player div.torii5 {
-  position: absolute;
-  left: -203px;
-  top: 150px;
-  width: 100px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.oo5 {
   display: none;
-  position: absolute;
-  left: -203px;
-  top: 125px;
-  width: 100px;
-  font-size: 40px;
-  font-family: "HGSｺﾞｼｯｸE";
-  font-weight: bold;
-  text-align: center;
-  -webkit-user-select: none;
-  color: dodgerblue;
 }
 
 div.player div.sl5 img {
-  position: absolute;
-  left: -203px;
-  top: 125px;
-}
-
-div.player div.sl5 img.ng-enter {
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
-  opacity: 0;
-}
-
-div.player div.sl5 img.ng-enter.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: rotateX(0deg);
-  transform: translate(0px, 0px);
-  transform: scale(1, 1);
+  display: none;
 }
 
 div.player div.action_sl5 {
-  position: absolute;
-  left: -175px;
-  top: 150px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.action_o {
-  position: absolute;
-  left: -22px;
-  top: -100px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.action_x {
-  position: absolute;
-  left: -22px;
-  top: 160px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.action_win {
-  position: absolute;
-  left: -30px;
-  top: 210px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.action_lose {
-  position: absolute;
-  left: -10px;
-  top: 210px;
-  opacity: 0.8;
-  -webkit-user-select: none;
+  display: none;
 }
 
 div.player div.action_wait {
-  position: absolute;
-  left: 10px;
-  top: 210px;
-  opacity: 0.8;
-  -webkit-user-select: none;
-}
-
-div.player div.path {
-  position: absolute;
-  top: 75px;
-  left: -105px;
+  display: none;
 }

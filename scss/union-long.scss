@@ -1,257 +1,60 @@
-@mixin player-item($left:0, $top:0, $width:0, $font-size:56, $font-family:"Migmix 1M"){
-    position: absolute;
-    left: #{$left}px;
-    top: #{$top}px;
-    @if ($width > 0){
-	    width: #{$width}px;    	
-    }
-    font-size: #{$font-size}px;
-    font-family: $font-family;
-    font-weight: bold;
-    text-align: center;
-}
-
-@mixin player-img($left:0, $top:0, $width:0, $height:0){
-	position:absolute;
-	left: #{$left}px;
-	top: #{$top}px;
-	@if ($width > 0){
-		width: #{$width}px;	
-	}
-	@if ($height > 0){
-		height: #{$height}px;		
-	}
-}
-
-@mixin player-button($left:0, $top:0){
-	position: absolute;
-	left: #{$left}px;
-	top: #{$top}px;
-	opacity: 0.8;
-}
-
-@mixin player-hr($left:0, $top:0, $width:0, $height:0){
-    position: absolute;
-    top: #{$top}px;
-    left: #{$left}px;
-    width: #{$width}px;
-    border: 0;
-    height: #{$height}px;
-    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0.5), rgba(255,255,255,1), rgba(255,255,255,0.5));
-}
-
-@mixin fadein($time: 1, $opacity: 1){
-    &.ng-enter{
-	    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) #{$time}s;
-	    opacity: 0;
-	    @content;
-	    
-	    &.ng-enter-active{
-		    opacity: $opacity;
-		    -webkit-transform: rotateX(0deg);
-		    transform: translate(0px, 0px);
-		    transform: scale(1, 1);
-	    }	
-    }
-}
-
-@mixin fadeout($time: 1, $opacity: 1){
-	opacity: 0;
-	
-    &.ng-enter{
-	    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) #{$time}s;
-	    -webkit-transform: rotateX(0deg);
-	    transform: translate(0px, 0px);
-	    transform: scale(1, 1);
-	    opacity: $opacity;
-	    
-	    &.ng-enter-active{
-		    opacity: 0;
-		    @content;
-	    }	
-    }
-}
-
-@mixin bordered($stroke-width:1, $stroke-color:#000000, $fill-color:#FFFFFF){
-    -webkit-text-stroke-color: $stroke-color;
-    -webkit-text-stroke-width: #{$stroke-width}px;
-    -webkit-text-fill-color: $fill-color;
-}
-
-@font-face {
-    font-family: "STU XVIII";
-    src: url("../font/STU XVIII.ttf");
-}
+@import "_rule.scss";
+@import "_union-common.scss";
 
 div.player {
-	hr.hr1 {
-		@include player-hr(-50, -140, 100, 2);
-	}
-	
-	hr.hr2 {
-		@include player-hr(-50, 100, 100, 2);
-	}
-
-	div.name {
-		@include player-item(-25, -100, 50, 56);
-	    letter-spacing: -24px;
-	    -webkit-writing-mode: vertical-rl;
-	    -webkit-text-orientation: upright;
-	    transform-origin: 0px 12px;
-	    transform: translate(16px,-10px);
-	}
-	
-	div.open div.paperRank {
-		@include player-item(-30, -125, 60, 20);
-		@include bordered;
-	    transform: translate(0px, 0px);
-	}
-	
-	div.overRect div.paperRank {
-		@include player-item(-30, -125, 60, 20);
-		@include bordered;
-	    transform: translate(0px, 0px);
-	}
-	
-	div.rank img{
-		@include player-img(-40, -210, 90, 60);
-	    background-color: rgba(0,0,0,0.5);
-	    @include fadein(1){
-		    -webkit-transform: rotateX(180deg);	    	
-	    }
-	}
-
-	div.status img {
-		&.win {
-			@include player-img(-30, -75, 60, 166);
-			@include fadein(0.5){
-			    transform: scale(1.5,1.5); 
-			}
-		}
-		
-		&.lose {
-			@include player-img(-37, -80, 75, 182);
-			@include fadein(0.5){
-			    transform: scale(1.5,1.5) rotate(30deg);	
-			}
-		}
-		
-		&.wait {
-			@include player-img(-30, -62, 60, 146);
-			@include fadein(0.5){
-			    transform: scale(1.5,1.5);	
-			}
-		}
-		
-		&.absent {
-			@include player-img(-30, -100, 60, 200);
-			@include fadein(0.5, 0.3){
-			    transform: scale(1.2, 1.2);	
-			}
-		}
-	}
-
-	div.motion img {	
-		&.o {
-			@include player-img(-25, -30);
-			@include fadeout(0.5){
-				transform: scale(1.5,1.5);
-			}
-		}
-		
-		&.x {
-			@include player-img(-25, -30);
-			@include fadeout(0.5){
-				transform: scale(1.5,1.5);
-			}
-		}
-	}
-
-	div.o {
-		@include player-item(-50, -230, 100, 72);
-		div.chance{
-			color:DodgerBlue;
-		}
-	}
-	
-	div.x {
-		@include player-item(-100, -165, 200, 40);
-		div.pinch{
-			color: Salmon;
-		}
-	}
-	
-	div.absent {
-		@include player-item(-35, -95, 70, 30);
-		@include bordered(1, #000000, #FFFF22);
-	    line-height: 80%;
-	    z-index: 1;
-	}
-
-	div.winningPoint{
-		@include player-item(20, -190, 50, 36);
-	}
-	
-	@for $i from 1 through 5 {
-		div.name#{$i} {
-			@include player-item(-50, 75+50*$i, 0, 24);
-		    transform-origin: 0px 0px;
-		    transform: translate(5px,-5px);
-		}
-	}
-	
-	@for $i from 1 through 5 {
-		div.torii#{$i} {
-			@include player-item(-75, 100+50*$i, 150, 18, "STU XVIII");
-		}
-	}
-	
-	@for $i from 1 through 5 {
-		div.oo#{$i} {
-			@include player-item(-50, 75+50*$i, 100, 40, "HGSｺﾞｼｯｸE");
-		    color: dodgerblue;
-		}
-	}
-	
-	@for $i from 1 through 5 {
-		div.sl#{$i} img {
-		    position: absolute;
-		    top: #{75+50*$i}px;
-		    left: -50px;
-		    -webkit-transition: 0.5s linear all;
-		    transform: translate(0px, 0px);
-		    opacity: 1;
-		    
-		    &.ng-enter{
-			    transform: translate(0px, -50px);
-			    opacity: 0;		    	
-		    }
-		}
-	}
-	
-	div.action_o {
-		@include player-button(-22, -100);
-	}
-	
-	div.action_x {
-		@include player-button(-22, 60);
-	}
-	
-	div.action_win {
-		@include player-button(-30, 110);
-	}
-	
-	div.action_lose {
-		@include player-button(-10, 110);
-	}
-	
-	div.action_wait {
-		@include player-button(10, 110);
-	}
-	
-	@for $i from 1 through 5 {
-		div.action_sl#{$i} {
-			@include player-button(-22, 75+50*$i);
-		}
-	}
+  hr.hr1 {
+    @include player-hr(-50, -140, 100, 2);
+  }
+  hr.hr2 {
+    @include player-hr(-50, 100, 100, 2);
+  }
+  div.name {
+  }
+  div.nameLat {
+  	display: none;
+  }
+  
+  $mem_opacity: 1, 1, 1, 1, 1;
+  @for $i from 1 through 5 {
+    div.name#{$i} {
+      @include player-item(-50, 75+50*$i, 0, 24);
+      transform-origin: 0px 0px;
+      transform: translate(5px, -5px);
+      opacity: nth($mem_opacity, $i);
+    }
+    div.torii#{$i} {
+      @include player-item(-75, 100+50*$i, 150, 18, "STU XVIII");
+      opacity: nth($mem_opacity, $i);
+    }
+    div.oo#{$i} {
+      @include player-item(-50, 75+50*$i, 100, 40, "HGSｺﾞｼｯｸE");
+      color: dodgerblue;
+    }
+    div.sl#{$i} img {
+      @include player-img(-50, 75+50*$i);
+      @include fadein(0.5){
+        transform: translate(0px, -50px);      	
+      }
+    }
+  }
+  div.action_o {
+    @include player-button(-22, -100);
+  }
+  div.action_x {
+    @include player-button(-22, 60);
+  }
+  div.action_win {
+    @include player-button(-30, 110);
+  }
+  div.action_lose {
+    @include player-button(-10, 110);
+  }
+  div.action_wait {
+    @include player-button(10, 110);
+  }
+  @for $i from 1 through 5 {
+    div.action_sl#{$i} {
+      @include player-button(-22, 75+50*$i);
+    }
+  }
 }

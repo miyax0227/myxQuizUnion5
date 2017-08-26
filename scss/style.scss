@@ -1,9 +1,4 @@
-@mixin score-div($fontsize:40px){
-	font-family: "MigMix 1M";
-	font-weight: bold;
-	position: absolute;
-    font-size: $fontsize;
-}
+@import "_rule.scss";
 
 @font-face {
     font-family: "MigMix 1M";
@@ -160,7 +155,7 @@ div.scoreboard {
 }
 
 div.player {
-    width: 200px;
+    width: 1000px;
     height: 1000px;
     transition: 1s;
     transform-origin: 0px 0px;
@@ -171,7 +166,7 @@ div.player {
     
     div.open{
 	    position: absolute;
-	    width: 200px;
+        width: 1000px;
 	    height: 1000px;
 		transform-origin: 0px 0px;
 	    
@@ -189,7 +184,7 @@ div.player {
     
     div.overRect {
 	    position: absolute;
-	    width: 200px;
+        width: 1000px;
 	    height: 1000px;	
 		transform-origin: 0px 0px;
 	    

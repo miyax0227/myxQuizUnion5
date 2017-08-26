@@ -4,26 +4,6 @@
   src: url("../font/STU XVIII.ttf");
 }
 
-div.player hr.hr1 {
-  position: absolute;
-  top: -140px;
-  left: -50px;
-  width: 100px;
-  border: 0;
-  height: 2px;
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5), white, rgba(255, 255, 255, 0.5));
-}
-
-div.player hr.hr2 {
-  position: absolute;
-  top: 100px;
-  left: -50px;
-  width: 100px;
-  border: 0;
-  height: 2px;
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5), white, rgba(255, 255, 255, 0.5));
-}
-
 div.player div.name {
   position: absolute;
   left: -25px;
@@ -33,11 +13,25 @@ div.player div.name {
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   letter-spacing: -24px;
   -webkit-writing-mode: vertical-rl;
   -webkit-text-orientation: upright;
   transform-origin: 0px 12px;
   transform: translate(16px, -10px);
+}
+
+div.player div.nameLat {
+  position: absolute;
+  left: -200px;
+  top: -120px;
+  font-size: 72px;
+  font-family: "Migmix 1M";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  transform-origin: -5px 0px;
+  transform: translate(55px, 0px);
 }
 
 div.player div.open div.paperRank {
@@ -49,6 +43,7 @@ div.player div.open div.paperRank {
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   -webkit-text-stroke-color: #000000;
   -webkit-text-stroke-width: 1px;
   -webkit-text-fill-color: #FFFFFF;
@@ -64,6 +59,7 @@ div.player div.overRect div.paperRank {
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   -webkit-text-stroke-color: #000000;
   -webkit-text-stroke-width: 1px;
   -webkit-text-fill-color: #FFFFFF;
@@ -76,6 +72,7 @@ div.player div.rank img {
   top: -210px;
   width: 90px;
   height: 60px;
+  -webkit-user-select: none;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -98,6 +95,7 @@ div.player div.status img.win {
   top: -75px;
   width: 60px;
   height: 166px;
+  -webkit-user-select: none;
 }
 
 div.player div.status img.win.ng-enter {
@@ -119,6 +117,7 @@ div.player div.status img.lose {
   top: -80px;
   width: 75px;
   height: 182px;
+  -webkit-user-select: none;
 }
 
 div.player div.status img.lose.ng-enter {
@@ -140,6 +139,7 @@ div.player div.status img.wait {
   top: -62px;
   width: 60px;
   height: 146px;
+  -webkit-user-select: none;
 }
 
 div.player div.status img.wait.ng-enter {
@@ -161,6 +161,7 @@ div.player div.status img.absent {
   top: -100px;
   width: 60px;
   height: 200px;
+  -webkit-user-select: none;
 }
 
 div.player div.status img.absent.ng-enter {
@@ -180,6 +181,7 @@ div.player div.motion img.o {
   position: absolute;
   left: -25px;
   top: -30px;
+  -webkit-user-select: none;
   opacity: 0;
 }
 
@@ -200,6 +202,7 @@ div.player div.motion img.x {
   position: absolute;
   left: -25px;
   top: -30px;
+  -webkit-user-select: none;
   opacity: 0;
 }
 
@@ -225,6 +228,7 @@ div.player div.o {
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
 }
 
 div.player div.o div.chance {
@@ -233,13 +237,14 @@ div.player div.o div.chance {
 
 div.player div.x {
   position: absolute;
-  left: -100px;
+  left: -150px;
   top: -165px;
-  width: 200px;
+  width: 300px;
   font-size: 40px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
 }
 
 div.player div.x div.pinch {
@@ -255,6 +260,7 @@ div.player div.absent {
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   -webkit-text-stroke-color: #000000;
   -webkit-text-stroke-width: 1px;
   -webkit-text-fill-color: #FFFF22;
@@ -271,6 +277,31 @@ div.player div.winningPoint {
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
+}
+
+div.player hr.hr1 {
+  position: absolute;
+  top: -140px;
+  left: -50px;
+  width: 100px;
+  border: 0;
+  height: 2px;
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5), white, rgba(255, 255, 255, 0.5));
+}
+
+div.player hr.hr2 {
+  position: absolute;
+  top: 100px;
+  left: -50px;
+  width: 100px;
+  border: 0;
+  height: 2px;
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5), white, rgba(255, 255, 255, 0.5));
+}
+
+div.player div.nameLat {
+  display: none;
 }
 
 div.player div.name1 {
@@ -281,56 +312,10 @@ div.player div.name1 {
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   transform-origin: 0px 0px;
   transform: translate(5px, -5px);
-}
-
-div.player div.name2 {
-  position: absolute;
-  left: -50px;
-  top: 175px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
-}
-
-div.player div.name3 {
-  position: absolute;
-  left: -50px;
-  top: 225px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
-}
-
-div.player div.name4 {
-  position: absolute;
-  left: -50px;
-  top: 275px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
-}
-
-div.player div.name5 {
-  position: absolute;
-  left: -50px;
-  top: 325px;
-  font-size: 24px;
-  font-family: "Migmix 1M";
-  font-weight: bold;
-  text-align: center;
-  transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  opacity: 1;
 }
 
 div.player div.torii1 {
@@ -342,50 +327,8 @@ div.player div.torii1 {
   font-family: "STU XVIII";
   font-weight: bold;
   text-align: center;
-}
-
-div.player div.torii2 {
-  position: absolute;
-  left: -75px;
-  top: 200px;
-  width: 150px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-}
-
-div.player div.torii3 {
-  position: absolute;
-  left: -75px;
-  top: 250px;
-  width: 150px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-}
-
-div.player div.torii4 {
-  position: absolute;
-  left: -75px;
-  top: 300px;
-  width: 150px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
-}
-
-div.player div.torii5 {
-  position: absolute;
-  left: -75px;
-  top: 350px;
-  width: 150px;
-  font-size: 18px;
-  font-family: "STU XVIII";
-  font-weight: bold;
-  text-align: center;
+  -webkit-user-select: none;
+  opacity: 1;
 }
 
 div.player div.oo1 {
@@ -397,7 +340,55 @@ div.player div.oo1 {
   font-family: "HGSｺﾞｼｯｸE";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   color: dodgerblue;
+}
+
+div.player div.sl1 img {
+  position: absolute;
+  left: -50px;
+  top: 125px;
+  -webkit-user-select: none;
+}
+
+div.player div.sl1 img.ng-enter {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  opacity: 0;
+  transform: translate(0px, -50px);
+}
+
+div.player div.sl1 img.ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
+  transform: translate(0px, 0px);
+  transform: scale(1, 1);
+}
+
+div.player div.name2 {
+  position: absolute;
+  left: -50px;
+  top: 175px;
+  font-size: 24px;
+  font-family: "Migmix 1M";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  transform-origin: 0px 0px;
+  transform: translate(5px, -5px);
+  opacity: 1;
+}
+
+div.player div.torii2 {
+  position: absolute;
+  left: -75px;
+  top: 200px;
+  width: 150px;
+  font-size: 18px;
+  font-family: "STU XVIII";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  opacity: 1;
 }
 
 div.player div.oo2 {
@@ -409,7 +400,55 @@ div.player div.oo2 {
   font-family: "HGSｺﾞｼｯｸE";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   color: dodgerblue;
+}
+
+div.player div.sl2 img {
+  position: absolute;
+  left: -50px;
+  top: 175px;
+  -webkit-user-select: none;
+}
+
+div.player div.sl2 img.ng-enter {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  opacity: 0;
+  transform: translate(0px, -50px);
+}
+
+div.player div.sl2 img.ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
+  transform: translate(0px, 0px);
+  transform: scale(1, 1);
+}
+
+div.player div.name3 {
+  position: absolute;
+  left: -50px;
+  top: 225px;
+  font-size: 24px;
+  font-family: "Migmix 1M";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  transform-origin: 0px 0px;
+  transform: translate(5px, -5px);
+  opacity: 1;
+}
+
+div.player div.torii3 {
+  position: absolute;
+  left: -75px;
+  top: 250px;
+  width: 150px;
+  font-size: 18px;
+  font-family: "STU XVIII";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  opacity: 1;
 }
 
 div.player div.oo3 {
@@ -421,7 +460,55 @@ div.player div.oo3 {
   font-family: "HGSｺﾞｼｯｸE";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   color: dodgerblue;
+}
+
+div.player div.sl3 img {
+  position: absolute;
+  left: -50px;
+  top: 225px;
+  -webkit-user-select: none;
+}
+
+div.player div.sl3 img.ng-enter {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  opacity: 0;
+  transform: translate(0px, -50px);
+}
+
+div.player div.sl3 img.ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
+  transform: translate(0px, 0px);
+  transform: scale(1, 1);
+}
+
+div.player div.name4 {
+  position: absolute;
+  left: -50px;
+  top: 275px;
+  font-size: 24px;
+  font-family: "Migmix 1M";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  transform-origin: 0px 0px;
+  transform: translate(5px, -5px);
+  opacity: 1;
+}
+
+div.player div.torii4 {
+  position: absolute;
+  left: -75px;
+  top: 300px;
+  width: 150px;
+  font-size: 18px;
+  font-family: "STU XVIII";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  opacity: 1;
 }
 
 div.player div.oo4 {
@@ -433,7 +520,55 @@ div.player div.oo4 {
   font-family: "HGSｺﾞｼｯｸE";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   color: dodgerblue;
+}
+
+div.player div.sl4 img {
+  position: absolute;
+  left: -50px;
+  top: 275px;
+  -webkit-user-select: none;
+}
+
+div.player div.sl4 img.ng-enter {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  opacity: 0;
+  transform: translate(0px, -50px);
+}
+
+div.player div.sl4 img.ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
+  transform: translate(0px, 0px);
+  transform: scale(1, 1);
+}
+
+div.player div.name5 {
+  position: absolute;
+  left: -50px;
+  top: 325px;
+  font-size: 24px;
+  font-family: "Migmix 1M";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  transform-origin: 0px 0px;
+  transform: translate(5px, -5px);
+  opacity: 1;
+}
+
+div.player div.torii5 {
+  position: absolute;
+  left: -75px;
+  top: 350px;
+  width: 150px;
+  font-size: 18px;
+  font-family: "STU XVIII";
+  font-weight: bold;
+  text-align: center;
+  -webkit-user-select: none;
+  opacity: 1;
 }
 
 div.player div.oo5 {
@@ -445,77 +580,28 @@ div.player div.oo5 {
   font-family: "HGSｺﾞｼｯｸE";
   font-weight: bold;
   text-align: center;
+  -webkit-user-select: none;
   color: dodgerblue;
-}
-
-div.player div.sl1 img {
-  position: absolute;
-  top: 125px;
-  left: -50px;
-  -webkit-transition: 0.5s linear all;
-  transform: translate(0px, 0px);
-  opacity: 1;
-}
-
-div.player div.sl1 img.ng-enter {
-  transform: translate(0px, -50px);
-  opacity: 0;
-}
-
-div.player div.sl2 img {
-  position: absolute;
-  top: 175px;
-  left: -50px;
-  -webkit-transition: 0.5s linear all;
-  transform: translate(0px, 0px);
-  opacity: 1;
-}
-
-div.player div.sl2 img.ng-enter {
-  transform: translate(0px, -50px);
-  opacity: 0;
-}
-
-div.player div.sl3 img {
-  position: absolute;
-  top: 225px;
-  left: -50px;
-  -webkit-transition: 0.5s linear all;
-  transform: translate(0px, 0px);
-  opacity: 1;
-}
-
-div.player div.sl3 img.ng-enter {
-  transform: translate(0px, -50px);
-  opacity: 0;
-}
-
-div.player div.sl4 img {
-  position: absolute;
-  top: 275px;
-  left: -50px;
-  -webkit-transition: 0.5s linear all;
-  transform: translate(0px, 0px);
-  opacity: 1;
-}
-
-div.player div.sl4 img.ng-enter {
-  transform: translate(0px, -50px);
-  opacity: 0;
 }
 
 div.player div.sl5 img {
   position: absolute;
-  top: 325px;
   left: -50px;
-  -webkit-transition: 0.5s linear all;
-  transform: translate(0px, 0px);
-  opacity: 1;
+  top: 325px;
+  -webkit-user-select: none;
 }
 
 div.player div.sl5 img.ng-enter {
-  transform: translate(0px, -50px);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
   opacity: 0;
+  transform: translate(0px, -50px);
+}
+
+div.player div.sl5 img.ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
+  transform: translate(0px, 0px);
+  transform: scale(1, 1);
 }
 
 div.player div.action_o {
@@ -523,6 +609,7 @@ div.player div.action_o {
   left: -22px;
   top: -100px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_x {
@@ -530,6 +617,7 @@ div.player div.action_x {
   left: -22px;
   top: 60px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_win {
@@ -537,6 +625,7 @@ div.player div.action_win {
   left: -30px;
   top: 110px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_lose {
@@ -544,6 +633,7 @@ div.player div.action_lose {
   left: -10px;
   top: 110px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_wait {
@@ -551,6 +641,7 @@ div.player div.action_wait {
   left: 10px;
   top: 110px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_sl1 {
@@ -558,6 +649,7 @@ div.player div.action_sl1 {
   left: -22px;
   top: 125px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_sl2 {
@@ -565,6 +657,7 @@ div.player div.action_sl2 {
   left: -22px;
   top: 175px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_sl3 {
@@ -572,6 +665,7 @@ div.player div.action_sl3 {
   left: -22px;
   top: 225px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_sl4 {
@@ -579,6 +673,7 @@ div.player div.action_sl4 {
   left: -22px;
   top: 275px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }
 
 div.player div.action_sl5 {
@@ -586,4 +681,5 @@ div.player div.action_sl5 {
   left: -22px;
   top: 325px;
   opacity: 0.8;
+  -webkit-user-select: none;
 }

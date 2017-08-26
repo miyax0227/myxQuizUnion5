@@ -1,5 +1,18 @@
-{
-	"source": "nameList",
-	"filter": "paperRank>=8",
-	"order": ["paperRank"]
-}
+[
+	{
+		"source": "nameList",
+		"minus": {
+			"source": "03_2R",
+			"filter": {
+				"param": "rank",
+				"oper": "==",
+				"crit": 1
+			}
+		},
+		"profile": true,
+		"random": true,
+		"property": {
+			"lot": [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4]
+		}
+	}
+]

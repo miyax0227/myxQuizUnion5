@@ -425,6 +425,25 @@ function($window, $interval, $filter, $uibModal) {
 
 		console.log(subEntryList);
 
+		// minusが指定されている場合
+		if (obj.hasOwnProperty('minus')) {
+		  var minusEntryNo;
+		  // minusがArrayで指定されている場合
+		  if (angular.isArray(obj.minus)) {
+			minusEntryNo = callMember(obj.minus).map(function(o) {
+			  return o.entryNo;
+			});
+			// minusがObjectで指定されている場合
+		  } else if (angular.isObject(obj.minus)) {
+			minusEntryNo = callMember([ obj.minus ]).map(function(o) {
+			  return o.entryNo;
+			});
+		  }
+		  subEntryList = angular.copy(subEntryList).filter(function(o) {
+			return minusEntryNo.indexOf(o.entryNo) == -1;
+		  });
+		}
+
 		// filterが指定されている場合
 		if (obj.hasOwnProperty('filter')) {
 		  subEntryList = angular.copy(subEntryList).filter(function(o) {

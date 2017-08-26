@@ -1,0 +1,100 @@
+@import "_rule.scss";
+
+@font-face {
+  font-family: "STU XVIII";
+  src: url("../font/STU XVIII.ttf");
+}
+
+div.player {
+  div.name {
+    @include player-item(-25, -100, 50, 56);
+    letter-spacing: -24px;
+    -webkit-writing-mode: vertical-rl;
+    -webkit-text-orientation: upright;
+    transform-origin: 0px 12px;
+    transform: translate(16px, -10px);
+  }
+  div.nameLat {
+    @include player-item(-200, -120, 0, 72);
+    transform-origin: -5px 0px;
+    transform: translate(55px, 0px);
+  }
+  div.open div.paperRank {
+    @include player-item(-30, -125, 60, 20);
+    @include bordered;
+    transform: translate(0px, 0px);
+  }
+  div.overRect div.paperRank {
+    @include player-item(-30, -125, 60, 20);
+    @include bordered;
+    transform: translate(0px, 0px);
+  }
+  div.rank img {
+    @include player-img(-40, -210, 90, 60);
+    background-color: rgba(0, 0, 0, 0.5);
+    @include fadein(1) {
+      -webkit-transform: rotateX(180deg);
+    }
+  }
+  div.status img {
+    &.win {
+      @include player-img(-30, -75, 60, 166);
+      @include fadein(0.5) {
+        transform: scale(1.5, 1.5);
+      }
+    }
+    &.lose {
+      @include player-img(-37, -80, 75, 182);
+      @include fadein(0.5) {
+        transform: scale(1.5, 1.5) rotate(30deg);
+      }
+    }
+    &.wait {
+      @include player-img(-30, -62, 60, 146);
+      @include fadein(0.5) {
+        transform: scale(1.5, 1.5);
+      }
+    }
+    &.absent {
+      @include player-img(-30, -100, 60, 200);
+      @include fadein(0.5, 0.3) {
+        transform: scale(1.2, 1.2);
+      }
+    }
+  }
+  div.motion img {
+    &.o {
+      @include player-img(-25, -30);
+      @include fadeout(0.5) {
+        transform: scale(1.5, 1.5);
+      }
+    }
+    &.x {
+      @include player-img(-25, -30);
+      @include fadeout(0.5) {
+        transform: scale(1.5, 1.5);
+      }
+    }
+  }
+  div.o {
+    @include player-item(-50, -230, 100, 72);
+    div.chance {
+      color: DodgerBlue;
+    }
+  }
+  div.x {
+    @include player-item(-150, -165, 300, 40);
+    div.pinch {
+      color: Salmon;
+    }
+  }
+  div.absent {
+    @include player-item(-35, -95, 70, 30);
+    @include bordered(1, #000000, #FFFF22);
+    line-height: 80%;
+    z-index: 1;
+  }
+  div.winningPoint {
+    @include player-item(20, -190, 50, 36);
+  }
+}
