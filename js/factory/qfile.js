@@ -478,6 +478,12 @@ function($window, $interval, $filter, $uibModal) {
 			angular.forEach(profiles, function(key) {
 			  o2[key] = o[key];
 			});
+			if(angular.isArray(obj.profile)){
+			  angular.forEach(obj.profile, function(key){
+				o2[key] = o[key];
+			  });
+			}
+			
 			return o2;
 		  });
 		}

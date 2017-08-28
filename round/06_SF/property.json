@@ -1,11 +1,11 @@
 [
 	{
-		"title": "7◯3×クイズ",
-		"maxRankDisplay": 2,
+		"title": "Semi-Final: Man to Man",
+		"maxRankDisplay": 1,
 		"openRankArray": null,
-		"winningPoint": 7,
-		"losingPoint": 3,
-		"penalty": 8,
-		"tweetRoundTitle": "[7◯3×]"
+		"winningPoint": 3,
+		"tweetRoundTitle": "[SF]",
+		"lots": [1, 2, 3, 4],
+		"norma": [4, 4, 4, 4, 4]
 	}
 ]

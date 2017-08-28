@@ -3,6 +3,7 @@
 	font-weight: bold;
 	position: absolute;
     font-size: $fontsize;
+  	-webkit-user-select: none;
 }
 
 @mixin player-item($left:0, $top:0, $width:0, $font-size:56, $font-family:"Migmix 1M") {

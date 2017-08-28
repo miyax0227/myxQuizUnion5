@@ -4,9 +4,9 @@
 		"minus": {
 			"source": "03_2R",
 			"filter": {
-				"param": "rank",
+				"param": "status",
 				"oper": "==",
-				"crit": 1
+				"crit": "win"
 			}
 		},
 		"profile": true,

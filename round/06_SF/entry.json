@@ -1,5 +1,28 @@
-{
-	"source": "nameList",
-	"filter": "paperRank>=8",
-	"order": ["paperRank"]
-}
+[
+	{
+		"source": [
+			{
+				"source": "03_2R",
+				"filter": {
+					"param": "status",
+					"oper": "==",
+					"crit": "win"
+				}
+			}, {
+				"source": "05_Rev2",
+				"filter": {
+					"param": "status",
+					"oper": "==",
+					"crit": "win"
+				}
+			}
+		],
+		"profile": true,
+		"random": true
+		,
+		"property": {
+			"lot": [1, 1, 2, 2, 3, 3, 4, 4],
+			"lotNum": [1, 2, 1, 2, 1, 2, 1, 2]
+		}
+	}
+]

@@ -315,8 +315,10 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	  case (property.norma[3] > player.oo4):
 		player.sl4 = 1;
 		break;
-	  default:
+	  case (property.norma[4] > player.oo5):
 		player.sl5 = 1;
+		break;
+	  default:
 		break;
 	  }
 

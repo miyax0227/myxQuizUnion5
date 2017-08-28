@@ -284,6 +284,7 @@ div.lot1 {
   font-weight: bold;
   position: absolute;
   font-size: 48px;
+  -webkit-user-select: none;
   top: 15%;
   left: 5.2%;
   text-align: center;
@@ -294,6 +295,7 @@ div.lot2 {
   font-weight: bold;
   position: absolute;
   font-size: 48px;
+  -webkit-user-select: none;
   top: 15%;
   left: 25.2%;
   text-align: center;
@@ -304,6 +306,7 @@ div.lot3 {
   font-weight: bold;
   position: absolute;
   font-size: 48px;
+  -webkit-user-select: none;
   top: 15%;
   left: 45.2%;
   text-align: center;
@@ -314,6 +317,7 @@ div.lot4 {
   font-weight: bold;
   position: absolute;
   font-size: 48px;
+  -webkit-user-select: none;
   top: 15%;
   left: 65.2%;
   text-align: center;
@@ -324,6 +328,7 @@ div.lot5 {
   font-weight: bold;
   position: absolute;
   font-size: 48px;
+  -webkit-user-select: none;
   top: 15%;
   left: 85.2%;
   text-align: center;

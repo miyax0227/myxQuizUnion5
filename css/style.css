@@ -78,6 +78,7 @@ div.scoreboard div.title {
   font-weight: bold;
   position: absolute;
   font-size: 40px;
+  -webkit-user-select: none;
   top: 0px;
   margin-left: calc(2% + 138px);
 }
@@ -87,6 +88,7 @@ div.scoreboard div.timer {
   font-weight: bold;
   position: absolute;
   font-size: 40px;
+  -webkit-user-select: none;
   top: 0px;
   width: 96%;
   margin-left: 2%;
@@ -98,6 +100,7 @@ div.scoreboard div.qCount {
   font-weight: bold;
   position: absolute;
   font-size: 40px;
+  -webkit-user-select: none;
   top: 45px;
   margin-left: calc(2% + 138px);
 }
@@ -142,6 +145,7 @@ div.scoreboard div.victory h1.cupTitle {
   font-weight: bold;
   position: absolute;
   font-size: 100px;
+  -webkit-user-select: none;
   margin-top: 10%;
 }
 
@@ -150,6 +154,7 @@ div.scoreboard div.victory h1.first {
   font-weight: bold;
   position: absolute;
   font-size: 100px;
+  -webkit-user-select: none;
   margin-top: 20%;
 }
 
@@ -158,6 +163,7 @@ div.scoreboard div.victory h1.name {
   font-weight: bold;
   position: absolute;
   font-size: 100px;
+  -webkit-user-select: none;
   margin-top: 30%;
 }
 
@@ -166,6 +172,7 @@ div.scoreboard div.victory h1.member {
   font-weight: bold;
   position: absolute;
   font-size: 40px;
+  -webkit-user-select: none;
   margin-top: 40%;
 }
 
