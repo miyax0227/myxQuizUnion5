@@ -105,6 +105,10 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	css : "winningPoint",
 	style : "number",
 	prefix : "/"
+  }, {
+	key : "rev",
+	value : 0,
+	style : "number",
   },
 
   {
@@ -125,8 +129,8 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   /*****************************************************************************
    * decor - 装飾用クラスリスト
    ****************************************************************************/
-  rule.decor=["chance","pinch"];
-  
+  rule.decor = [ "chance", "pinch" ];
+
   /*****************************************************************************
    * tweet - ルール固有のツイートのひな型
    ****************************************************************************/
@@ -199,7 +203,30 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	  addQCount(players, header, property);
 	},
 	tweet : "thru"
-  }, {
+  }
+  /*****************************************************************************
+   * 勝ち抜け者を元に戻す
+   ****************************************************************************/
+  , {
+	name : "rev",
+	button_css : "btn btn-default",
+	group : "rule",
+	enable0 : function(players, header) {
+	  return true;
+	},
+	action0 : function(players, header, property) {
+	  angular.forEach(players, function(player) {
+		if (player.status == "win") {
+		  player.status = "normal";
+		  player.rank = 0;
+		  player.o = 0;
+		  player.rev = 1;
+		  player.winningPoint = property.revWinningPoint;
+		}
+	  })
+	}
+  }
+  ,  {
 	name : "",
 	button_css : "btn btn-default",
 	group : "rule",
@@ -274,7 +301,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	  } else {
 		player.debt = property.winningPoint - player.o;
 	  }
-	  
+
 	  // chance・pinchの計算
 	  player.chance = (player.debt == 1);
 	  player.pinch = (property.losingPoint - player.x == 1);
@@ -285,6 +312,13 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	});
 
 	angular.forEach(players, function(player, index) {
+	  var norma;
+	  if (player.rev == 0) {
+		norma = property.norma;
+	  } else {
+		norma = property.revNorma;
+	  }
+
 	  player.sl1 = 0;
 	  player.sl2 = 0;
 	  player.sl3 = 0;
@@ -292,37 +326,35 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 	  player.sl5 = 0;
 
 	  var o = player.o;
-	  player.oo1 = Math.min(o, property.norma[0]);
+	  player.oo1 = Math.min(o, norma[0]);
 	  o -= player.oo1;
-	  player.oo2 = Math.min(o, property.norma[1]);
+	  player.oo2 = Math.min(o, norma[1]);
 	  o -= player.oo2;
-	  player.oo3 = Math.min(o, property.norma[2]);
+	  player.oo3 = Math.min(o, norma[2]);
 	  o -= player.oo3;
-	  player.oo4 = Math.min(o, property.norma[3]);
+	  player.oo4 = Math.min(o, norma[3]);
 	  o -= player.oo4;
-	  player.oo5 = Math.min(o, property.norma[4]);
+	  player.oo5 = Math.min(o, norma[4]);
 
 	  switch (true) {
-	  case (property.norma[0] > player.oo1):
+	  case (norma[0] > player.oo1):
 		player.sl1 = 1;
 		break;
-	  case (property.norma[1] > player.oo2):
+	  case (norma[1] > player.oo2):
 		player.sl2 = 1;
 		break;
-	  case (property.norma[2] > player.oo3):
+	  case (norma[2] > player.oo3):
 		player.sl3 = 1;
 		break;
-	  case (property.norma[3] > player.oo4):
+	  case (norma[3] > player.oo4):
 		player.sl4 = 1;
 		break;
-	  case (property.norma[4] > player.oo5):
+	  case (norma[4] > player.oo5):
 		player.sl5 = 1;
 		break;
 	  default:
 		break;
 	  }
-
-	  console.log(player);
 	});
 
   }

@@ -1,11 +1,15 @@
 [
 	{
-		"title": "7◯3×クイズ",
-		"maxRankDisplay": 2,
+		"title": "Final : Reboot",
+		"maxRankDisplay": 0,
 		"openRankArray": null,
-		"winningPoint": 7,
-		"losingPoint": 3,
-		"penalty": 8,
-		"tweetRoundTitle": "[7◯3×]"
+		"winningPoint": 10,
+		"losingPoint": 5,
+		"penalty": 0,
+		"tweetRoundTitle": "[F]",
+		"lots": [1],
+		"norma": [2, 2, 2, 2, 2],
+		"revNorma": [1, 1, 1, 1, 1],
+		"revWinningPoint": 5
 	}
 ]
