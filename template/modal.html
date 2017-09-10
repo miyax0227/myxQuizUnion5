@@ -32,13 +32,13 @@
       </tr>
       <tr ng-repeat="player in current.players">
         <td id="add">
-        <button  class="btn btn-link" ng-click="addPlayer($index+1)">
+        <a  class="btn btn-link" ng-click="addPlayer($index+1)">
           [+]
-        </button></td>
+        </a></td>
         <td id="del">
-        <button class="btn btn-link" ng-click="removePlayer($index)">
+        <a class="btn btn-link" ng-click="removePlayer($index)">
           [-]
-        </button></td>
+        </a></td>
         <td id="index">{{$index+1}}</td>
         <td class="profile"><div profile></div></td>
         <td ng-repeat="item in items| with: 'value'" ng-if="item.hasOwnProperty('style')" id="{{item.key}}">
