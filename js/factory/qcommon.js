@@ -357,7 +357,8 @@ app
 		var modal = $uibModal.open({
 		  templateUrl : "../../template/modal.html",
 		  scope : scope,
-		  controller : "modal"
+		  controller : "modal",
+		  backdrop : "static"
 		});
 
 		modal.result.then(function() {
@@ -640,8 +641,9 @@ app
 
 		  // 文字の繰り返しが指定されている場合
 		} else if (item.hasOwnProperty('repeatChar')) {
-		  if (parseInt(value) == null || value == null || value == undefined) {
-			value = 0;
+		  // 数値でない場合
+		  if (! (parseInt(value) > 0)) {
+			return "";
 		  }
 		  return Array(parseInt(value) + 1).join(item.repeatChar);
 
@@ -655,14 +657,17 @@ app
 		  if (item.hasOwnProperty('suffix')) {
 			suffix = item.suffix;
 		  }
+
 		  // suffixに'th'が指定されている場合は、valueに応じてst,nd,rdに変換
-		  if (suffix == 'th') {
-			if ([ 1, 21, 31, 41, 51, 61, 71, 81, 91 ].indexOf(value % 100) >= 0) {
-			  suffix = 'st';
-			} else if ([ 2, 22, 32, 42, 52, 62, 72, 82, 92 ].indexOf(value % 100) >= 0) {
-			  suffix = 'nd';
-			} else if ([ 3, 23, 33, 43, 53, 63, 73, 83, 93 ].indexOf(value % 100) >= 0) {
-			  suffix = 'rd';
+		  if (angular.isNumber(value)) {
+			if (suffix == 'th') {
+			  if ([ 1, 21, 31, 41, 51, 61, 71, 81, 91 ].indexOf(value % 100) >= 0) {
+				suffix = 'st';
+			  } else if ([ 2, 22, 32, 42, 52, 62, 72, 82, 92 ].indexOf(value % 100) >= 0) {
+				suffix = 'nd';
+			  } else if ([ 3, 23, 33, 43, 53, 63, 73, 83, 93 ].indexOf(value % 100) >= 0) {
+				suffix = 'rd';
+			  }
 			}
 		  }
 
@@ -929,16 +934,26 @@ app
 	   * @memberOf qCommon
 	   * @param {object} scope - $scope
 	   * @param {object} player - 変更したいプレイヤー
+	   * @param {array} items - items
 	   ************************************************************************/
-	  function changePlayer(scope, player) {
+	  function changePlayer(scope, player, items) {
 		angular.forEach(scope.nameList, function(participant) {
 		  participant.filtered = false;
+		});
+
+		scope.selectPlayer = {};
+
+		angular.forEach(items, function(item) {
+		  if (item.hasOwnProperty('profile')) {
+			scope.selectPlayer[item.key] = player[item.key];
+		  }
 		});
 
 		var modal = $uibModal.open({
 		  templateUrl : "../../template/selectPlayer.html",
 		  scope : scope,
-		  controller : "modal"
+		  controller : "modal",
+		  backdrop : "static"
 		});
 
 		modal.result.then(function() {

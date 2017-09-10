@@ -6,18 +6,19 @@
           <th ng-repeat="item in items | with: 'profile'" ng-if="! item.hasOwnProperty('repeat')"> {{item.key}} </th>
           <th ng-repeat="item in items | with: 'profile'" ng-if="item.repeat"> {{item.key}}&nbsp;x </th>
         </tr>
-        
+
         <tr>
           <td ng-repeat="item in items | with: 'profile'" ng-if="! item.hasOwnProperty('repeat')">
-          <input class="form-control" ng-model="selectPlayer[item.key]" ng-init="selectPlayer[item.key]=''">
-          </input> </td>
+          <input ng-if="item.style == 'string'"  ng-model="selectPlayer[item.key]" class="form-control"/>
+          <input ng-if="item.style == 'number'"  ng-model="selectPlayer[item.key]" class="form-control" type="number" required />
+          <input ng-if="item.style == 'boolean'" ng-model="selectPlayer[item.key]" class="form-control" type="checkbox"/>
+          </td>
 
-          <td ng-repeat="item in items | with: 'profile'" ng-if="item.repeat">
-          	<span ng-repeat="i in naturalNumberList(item.repeat[1])">
-            <input class="form-control"  ng-model="selectPlayer[item.repeat[0]+i]" ng-init="selectPlayer[item.repeat[0]+i]=''">
-            </input>
-            <a href="#" ng-click="moveDown(i, items)">▼</a>
-            </span></td>
+          <td ng-repeat="item in items | with: 'profile'" ng-if="item.repeat"><span ng-repeat="i in naturalNumberList(item.repeat[1])">
+            <input ng-if="item.style == 'string'"  ng-model="selectPlayer[item.repeat[0]+i]" class="form-control"/>
+            <input ng-if="item.style == 'number'"  ng-model="selectPlayer[item.repeat[0]+i]" class="form-control" type="number" required />
+            <input ng-if="item.style == 'boolean'" ng-model="selectPlayer[item.repeat[0]+i]" class="form-control" type="checkbox"/>
+            <a href="#" ng-click="moveDown(i, items)">▼</a> </span></td>
         </tr>
       </table>
       <div class="text-center">

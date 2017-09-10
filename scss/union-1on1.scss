@@ -39,13 +39,13 @@ div.player {
       	transform: translate(250px ,0px);
       }
       div.chance#{$i} {
-      	color: dodgerblue;
+      	color: $chance-color;
       }
       div.win#{$i} {
-      	color: gold;
+      	color: $win-color;
       }
       div.lose#{$i} {
-      	color: gray;
+      	color: $lose-color;
       }
     }
     div.sl#{$i} img {

@@ -194,7 +194,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   {
 	name : "1",
 	css : "action_sl1",
-	button_css : "btn btn-info",
+	button_css : "btn btn-info btn-lg",
 	enable0 : function(player) {
 	  return enable00(1, player);
 	},
@@ -204,7 +204,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   }, {
 	name : "2",
 	css : "action_sl2",
-	button_css : "btn btn-info",
+	button_css : "btn btn-info btn-lg",
 	enable0 : function(player) {
 	  return enable00(2, player);
 	},
@@ -214,7 +214,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   }, {
 	name : "3",
 	css : "action_sl3",
-	button_css : "btn btn-info",
+	button_css : "btn btn-info btn-lg",
 	enable0 : function(player) {
 	  return enable00(3, player);
 	},
@@ -224,7 +224,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   }, {
 	name : "4",
 	css : "action_sl4",
-	button_css : "btn btn-info",
+	button_css : "btn btn-info btn-lg",
 	enable0 : function(player) {
 	  return enable00(4, player);
 	},
@@ -234,7 +234,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   }, {
 	name : "5",
 	css : "action_sl5",
-	button_css : "btn btn-info",
+	button_css : "btn btn-info btn-lg",
 	enable0 : function(player) {
 	  return enable00(5, player);
 	},

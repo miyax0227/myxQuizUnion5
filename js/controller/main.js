@@ -174,8 +174,8 @@ app.config([ "$locationProvider", function($locationProvider) {
 		  $scope.getDisplayValue = qCommon.getDisplayValue;
 
 		  /* changePlayer - プレイヤー変更用のモーダルウィンドウを表示する */
-		  $scope.changePlayer = function(player) {
-			qCommon.changePlayer($scope, player);
+		  $scope.changePlayer = function(player, items) {
+			qCommon.changePlayer($scope, player, items);
 		  };
 
 		  /* decoration - 装飾用クラスリストを取得する */

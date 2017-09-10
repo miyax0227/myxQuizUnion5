@@ -1,4 +1,8 @@
 @import "_rule.scss";
+$chance-color: lightskyblue;
+$pinch-color:  lightpink;
+$win-color:    gold;
+$lose-color:   gray;
 
 @font-face {
   font-family: "STU XVIII";
@@ -79,14 +83,15 @@ div.player {
   div.o {
     @include player-item(-50, -230, 100, 72);
     div.chance {
-      color: DodgerBlue;
+      color: $chance-color;
     }
   }
   div.x {
-    @include player-item(-150, -165, 300, 40);
+    @include player-item(-150, -175, 300, 60);
     div.pinch {
-      color: Salmon;
+      color: $pinch-color;
     }
+    font-family: "Impact";
   }
   div.absent {
     @include player-item(-35, -95, 70, 30);

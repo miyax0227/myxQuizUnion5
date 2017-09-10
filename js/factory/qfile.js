@@ -206,7 +206,12 @@ function($window, $interval, $filter, $uibModal) {
 		  c : column
 		})];
 		if (cell != null) {
-		  return cell.w;
+		  console.log(cell.t, cell.v, cell.w);
+		  if (cell.t == "n") {
+			return cell.v;
+		  } else {
+			return cell.w;
+		  }
 		} else {
 		  return null;
 		}
@@ -231,7 +236,7 @@ function($window, $interval, $filter, $uibModal) {
 		  var title = getTextByCell(rangeVal.s.r, c);
 		  var text = getTextByCell(r, c);
 
-		  if (title != null && title != "" && text != null && text != "") {
+		  if (title != null && title != "") {
 			player[title] = text;
 		  }
 		}
@@ -478,12 +483,12 @@ function($window, $interval, $filter, $uibModal) {
 			angular.forEach(profiles, function(key) {
 			  o2[key] = o[key];
 			});
-			if(angular.isArray(obj.profile)){
-			  angular.forEach(obj.profile, function(key){
+			if (angular.isArray(obj.profile)) {
+			  angular.forEach(obj.profile, function(key) {
 				o2[key] = o[key];
 			  });
 			}
-			
+
 			return o2;
 		  });
 		}

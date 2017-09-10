@@ -17,18 +17,19 @@ div.player {
   $mem_opacity: 1, 1, 1, 1, 1;
   @for $i from 1 through 5 {
     div.name#{$i} {
-      @include player-item(-50, 75+50*$i, 0, 24);
+      @include player-item(-50, 90+50*$i, 0, 24);
       transform-origin: 0px 0px;
       transform: translate(5px, -5px);
       opacity: nth($mem_opacity, $i);
     }
     div.torii#{$i} {
       @include player-item(-75, 100+50*$i, 150, 18, "STU XVIII");
+      display: none;
       opacity: nth($mem_opacity, $i);
     }
     div.oo#{$i} {
       @include player-item(-50, 75+50*$i, 100, 40, "HGSｺﾞｼｯｸE");
-      color: dodgerblue;
+      color: $chance-color;
     }
     div.sl#{$i} img {
       @include player-img(-50, 75+50*$i);

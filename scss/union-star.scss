@@ -18,17 +18,18 @@ div.player {
   $delta: (0, -160), (152, -50), (94, 129), (-95, 129), (-153, -50);
   @for $i from 1 through 5 {
     div.name#{$i} {
-      @include player-item($mem_x+nth(nth($delta, $i), 1), $mem_y+nth(nth($delta, $i), 2), 0, 24);
+      @include player-item($mem_x+nth(nth($delta, $i), 1), $mem_y+15+nth(nth($delta, $i), 2), 0, 24);
       transform-origin: 0px 0px;
       transform: translate(5px, -5px);
      }
     div.torii#{$i} {
       @include player-item($mem_x+nth(nth($delta, $i), 1), $mem_y+25+nth(nth($delta, $i), 2), 100, 18, "STU XVIII");
+      display: none;
     }
     div.oo#{$i} {
       display: none;
       @include player-item($mem_x+nth(nth($delta, $i), 1), $mem_y+nth(nth($delta, $i), 2), 100, 40, "HGSｺﾞｼｯｸE");
-      color: dodgerblue;
+      color: $chance-color;
     }
     div.sl#{$i} img {
       position: absolute;

@@ -14,27 +14,28 @@ div.player {
   	display: none;
   }
   
-  $mem_opacity: 0.5, 0.5, 0.5, 1, 1;
   @for $i from 1 through 5 {
     div.name#{$i} {
       @include player-item(-50, 75+50*$i, 0, 24);
       transform-origin: 0px 0px;
       transform: translate(5px, -5px);
-      opacity: nth($mem_opacity, $i);
+      display: none;
     }
     div.torii#{$i} {
       @include player-item(-75, 100+50*$i, 150, 18, "STU XVIII");
-      opacity: nth($mem_opacity, $i);
+      display: none;
     }
     div.oo#{$i} {
-      @include player-item(-75, 75+50*$i, 150, 40, "HGSｺﾞｼｯｸE");
-      color: dodgerblue;
+      @include player-item(-50, 75+50*$i, 100, 40, "HGSｺﾞｼｯｸE");
+      color: $chance-color;
+      display: none;
     }
     div.sl#{$i} img {
       @include player-img(-50, 75+50*$i);
       @include fadein(0.5){
         transform: translate(0px, -50px);      	
       }
+      display: none;
     }
   }
   div.action_o {
@@ -56,5 +57,6 @@ div.player {
     div.action_sl#{$i} {
       @include player-button(-22, 75+50*$i);
     }
+    display: none;
   }
 }

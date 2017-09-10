@@ -186,7 +186,7 @@ app.factory('rule', [
 	  {
 		name : "1",
 		css : "action_sl1",
-		button_css : "btn btn-info",
+		button_css : "btn btn-info btn-lg",
 		enable0 : function(player) {
 		  return enable00(1, player);
 		},
@@ -196,7 +196,7 @@ app.factory('rule', [
 	  }, {
 		name : "2",
 		css : "action_sl2",
-		button_css : "btn btn-info",
+		button_css : "btn btn-info btn-lg",
 		enable0 : function(player) {
 		  return enable00(2, player);
 		},
@@ -206,7 +206,7 @@ app.factory('rule', [
 	  }, {
 		name : "3",
 		css : "action_sl3",
-		button_css : "btn btn-info",
+		button_css : "btn btn-info btn-lg",
 		enable0 : function(player) {
 		  return enable00(3, player);
 		},
@@ -216,7 +216,7 @@ app.factory('rule', [
 	  }, {
 		name : "4",
 		css : "action_sl4",
-		button_css : "btn btn-info",
+		button_css : "btn btn-info btn-lg",
 		enable0 : function(player) {
 		  return enable00(4, player);
 		},
@@ -226,7 +226,7 @@ app.factory('rule', [
 	  }, {
 		name : "5",
 		css : "action_sl5",
-		button_css : "btn btn-info",
+		button_css : "btn btn-info btn-lg",
 		enable0 : function(player) {
 		  return enable00(5, player);
 		},
@@ -315,6 +315,13 @@ app.factory('rule', [
 	   ************************************************************************/
 	  function calc(players, header, items, property) {
 		var pos = 0;
+		angular.forEach(players, function(player){		  
+		  // lotNum
+		  player.lotNum = players.filter(function(p,i){
+			return p.lot == player.lot && i <= index
+		  }).length;
+		});
+		
 		angular.forEach(players, function(player, index) {
 		  // 横向き名前
 		  player.nameLat = player.name;

@@ -232,23 +232,24 @@ div.player div.o {
 }
 
 div.player div.o div.chance {
-  color: DodgerBlue;
+  color: lightskyblue;
 }
 
 div.player div.x {
   position: absolute;
   left: -150px;
-  top: -165px;
+  top: -175px;
   width: 300px;
-  font-size: 40px;
+  font-size: 60px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Impact";
 }
 
 div.player div.x div.pinch {
-  color: Salmon;
+  color: lightpink;
 }
 
 div.player div.absent {
@@ -307,7 +308,7 @@ div.player div.nameLat {
 div.player div.name1 {
   position: absolute;
   left: -50px;
-  top: 125px;
+  top: 140px;
   font-size: 24px;
   font-family: "Migmix 1M";
   font-weight: bold;
@@ -328,6 +329,7 @@ div.player div.torii1 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  display: none;
   opacity: 1;
 }
 
@@ -341,7 +343,7 @@ div.player div.oo1 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: dodgerblue;
+  color: lightskyblue;
 }
 
 div.player div.sl1 img {
@@ -367,7 +369,7 @@ div.player div.sl1 img.ng-enter.ng-enter-active {
 div.player div.name2 {
   position: absolute;
   left: -50px;
-  top: 175px;
+  top: 190px;
   font-size: 24px;
   font-family: "Migmix 1M";
   font-weight: bold;
@@ -388,6 +390,7 @@ div.player div.torii2 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  display: none;
   opacity: 1;
 }
 
@@ -401,7 +404,7 @@ div.player div.oo2 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: dodgerblue;
+  color: lightskyblue;
 }
 
 div.player div.sl2 img {
@@ -427,7 +430,7 @@ div.player div.sl2 img.ng-enter.ng-enter-active {
 div.player div.name3 {
   position: absolute;
   left: -50px;
-  top: 225px;
+  top: 240px;
   font-size: 24px;
   font-family: "Migmix 1M";
   font-weight: bold;
@@ -448,6 +451,7 @@ div.player div.torii3 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  display: none;
   opacity: 1;
 }
 
@@ -461,7 +465,7 @@ div.player div.oo3 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: dodgerblue;
+  color: lightskyblue;
 }
 
 div.player div.sl3 img {
@@ -487,7 +491,7 @@ div.player div.sl3 img.ng-enter.ng-enter-active {
 div.player div.name4 {
   position: absolute;
   left: -50px;
-  top: 275px;
+  top: 290px;
   font-size: 24px;
   font-family: "Migmix 1M";
   font-weight: bold;
@@ -508,6 +512,7 @@ div.player div.torii4 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  display: none;
   opacity: 1;
 }
 
@@ -521,7 +526,7 @@ div.player div.oo4 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: dodgerblue;
+  color: lightskyblue;
 }
 
 div.player div.sl4 img {
@@ -547,7 +552,7 @@ div.player div.sl4 img.ng-enter.ng-enter-active {
 div.player div.name5 {
   position: absolute;
   left: -50px;
-  top: 325px;
+  top: 340px;
   font-size: 24px;
   font-family: "Migmix 1M";
   font-weight: bold;
@@ -568,6 +573,7 @@ div.player div.torii5 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  display: none;
   opacity: 1;
 }
 
@@ -581,7 +587,7 @@ div.player div.oo5 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: dodgerblue;
+  color: lightskyblue;
 }
 
 div.player div.sl5 img {

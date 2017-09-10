@@ -231,23 +231,24 @@ div.player div.o {
 }
 
 div.player div.o div.chance {
-  color: DodgerBlue;
+  color: lightskyblue;
 }
 
 div.player div.x {
   position: absolute;
   left: -150px;
-  top: -165px;
+  top: -175px;
   width: 300px;
-  font-size: 40px;
+  font-size: 60px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Impact";
 }
 
 div.player div.x div.pinch {
-  color: Salmon;
+  color: lightpink;
 }
 
 div.player div.absent {
