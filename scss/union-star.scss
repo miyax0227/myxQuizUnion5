@@ -38,6 +38,16 @@ div.player {
       @include fadein(0.2){
       }
     }
+    
+      div.status img {
+	    &.win {
+	      @include player-img(-30*2, -75, 60*2, 166*2);
+	    }
+	    &.lose {
+	      @include player-img(-37*2, -80, 75*2, 182*2);
+	    }
+	  }
+    
     div.action_sl#{$i} {
       @include player-button($mem_x+28+nth(nth($delta, $i), 1), $mem_y+25+nth(nth($delta, $i), 2));
     }

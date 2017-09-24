@@ -34,6 +34,10 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
    * items - ルール固有のアイテム
    ****************************************************************************/
   rule.items = [ {
+	key : "nameLat",
+	css : "nameLat",
+	htrans : 4.1
+  }, {
 	key : "o",
 	value : 0,
 	style : "number",
@@ -225,8 +229,7 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
 		}
 	  })
 	}
-  }
-  ,  {
+  }, {
 	name : "",
 	button_css : "btn btn-default",
 	group : "rule",
@@ -280,6 +283,9 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   function calc(players, header, items, property) {
 	var pos = 0;
 	angular.forEach(players, function(player, index) {
+	  // nameLat
+	  player.nameLat = player.name;
+
 	  // 位置計算
 	  if (player.lot == header.nowLot) {
 		player.line = null;

@@ -304,10 +304,6 @@ div.player div.name {
   display: none;
 }
 
-div.player div.x {
-  display: none;
-}
-
 div.player div.name1 {
   position: absolute;
   left: -125px;
@@ -338,38 +334,18 @@ div.player div.torii1 {
 
 div.player div.oo1 {
   position: absolute;
-  left: -50px;
+  left: -100px;
   top: -5px;
-  width: 100px;
+  width: 200px;
   font-size: 64px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-}
-
-div.player div.oo1 div.right {
-  transform: translate(-250px, 0px);
-}
-
-div.player div.oo1 div.left {
-  transform: translate(250px, 0px);
-}
-
-div.player div.oo1 div.chance1 {
   color: lightskyblue;
 }
 
-div.player div.oo1 div.win1 {
-  color: gold;
-}
-
-div.player div.oo1 div.lose1 {
-  color: gray;
-}
-
 div.player div.sl1 img {
-  display: none;
   position: absolute;
   left: -120px;
   top: 0px;
@@ -438,38 +414,18 @@ div.player div.torii2 {
 
 div.player div.oo2 {
   position: absolute;
-  left: -50px;
+  left: -100px;
   top: 70px;
-  width: 100px;
+  width: 200px;
   font-size: 64px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-}
-
-div.player div.oo2 div.right {
-  transform: translate(-250px, 0px);
-}
-
-div.player div.oo2 div.left {
-  transform: translate(250px, 0px);
-}
-
-div.player div.oo2 div.chance2 {
   color: lightskyblue;
 }
 
-div.player div.oo2 div.win2 {
-  color: gold;
-}
-
-div.player div.oo2 div.lose2 {
-  color: gray;
-}
-
 div.player div.sl2 img {
-  display: none;
   position: absolute;
   left: -120px;
   top: 75px;
@@ -538,38 +494,18 @@ div.player div.torii3 {
 
 div.player div.oo3 {
   position: absolute;
-  left: -50px;
+  left: -100px;
   top: 145px;
-  width: 100px;
+  width: 200px;
   font-size: 64px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-}
-
-div.player div.oo3 div.right {
-  transform: translate(-250px, 0px);
-}
-
-div.player div.oo3 div.left {
-  transform: translate(250px, 0px);
-}
-
-div.player div.oo3 div.chance3 {
   color: lightskyblue;
 }
 
-div.player div.oo3 div.win3 {
-  color: gold;
-}
-
-div.player div.oo3 div.lose3 {
-  color: gray;
-}
-
 div.player div.sl3 img {
-  display: none;
   position: absolute;
   left: -120px;
   top: 150px;
@@ -638,38 +574,18 @@ div.player div.torii4 {
 
 div.player div.oo4 {
   position: absolute;
-  left: -50px;
+  left: -100px;
   top: 220px;
-  width: 100px;
+  width: 200px;
   font-size: 64px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-}
-
-div.player div.oo4 div.right {
-  transform: translate(-250px, 0px);
-}
-
-div.player div.oo4 div.left {
-  transform: translate(250px, 0px);
-}
-
-div.player div.oo4 div.chance4 {
   color: lightskyblue;
 }
 
-div.player div.oo4 div.win4 {
-  color: gold;
-}
-
-div.player div.oo4 div.lose4 {
-  color: gray;
-}
-
 div.player div.sl4 img {
-  display: none;
   position: absolute;
   left: -120px;
   top: 225px;
@@ -738,38 +654,18 @@ div.player div.torii5 {
 
 div.player div.oo5 {
   position: absolute;
-  left: -50px;
+  left: -100px;
   top: 295px;
-  width: 100px;
+  width: 200px;
   font-size: 64px;
   font-family: "Migmix 1M";
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-}
-
-div.player div.oo5 div.right {
-  transform: translate(-250px, 0px);
-}
-
-div.player div.oo5 div.left {
-  transform: translate(250px, 0px);
-}
-
-div.player div.oo5 div.chance5 {
   color: lightskyblue;
 }
 
-div.player div.oo5 div.win5 {
-  color: gold;
-}
-
-div.player div.oo5 div.lose5 {
-  color: gray;
-}
-
 div.player div.sl5 img {
-  display: none;
   position: absolute;
   left: -120px;
   top: 300px;
@@ -810,16 +706,16 @@ div.player div.status img.lose {
 
 div.player div.action_o {
   position: absolute;
-  left: -22px;
-  top: -100px;
+  left: -52px;
+  top: -70px;
   opacity: 0.8;
   -webkit-user-select: none;
 }
 
 div.player div.action_x {
   position: absolute;
-  left: -22px;
-  top: -140px;
+  left: 8px;
+  top: -70px;
   opacity: 0.8;
   -webkit-user-select: none;
 }

@@ -315,7 +315,7 @@ app.factory('rule', [
 	   ************************************************************************/
 	  function calc(players, header, items, property) {
 		var pos = 0;
-		angular.forEach(players, function(player){		  
+		angular.forEach(players, function(player, index){		  
 		  // lotNum
 		  player.lotNum = players.filter(function(p,i){
 			return p.lot == player.lot && i <= index
