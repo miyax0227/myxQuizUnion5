@@ -1,0 +1,156 @@
+<!doctype html>
+<html ng-app="five-bomber">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <script src="js/libs/angular.js"></script>
+    <script src="js/libs/angular-animate.min.js"></script>
+    <script src="js/libs/ui-bootstrap-tpls.js"></script>
+
+    <style type="text/css">
+      <!--
+      body {
+      background-color: lightgray;
+      }
+
+      div.p1{
+      position:absolute; left:2%; width:16%; top:10%; height:80%;
+      background: linear-gradient(to left, black, lightblue, black);
+      }
+      div.p2{
+      position:absolute; left:22%; width:16%; top:10%; height:80%;
+      background: linear-gradient(to left, black, lightgreen, black);
+      }
+      div.p3{
+      position:absolute; left:42%; width:16%; top:10%; height:80%;
+      background: linear-gradient(to left, black, yellow, black);
+      }
+      div.p4{
+      position:absolute; left:62%; width:16%; top:10%; height:80%;
+      background: linear-gradient(to left, black, orange, black);
+      }
+      div.p5{
+      position:absolute; left:82%; width:16%; top:10%; height:80%;
+      background: linear-gradient(to left, black, red, black);
+      }
+      div.time{
+      position:absolute; right:2%; top:1%;
+      font-size: 40px;
+      }
+      img.bakudan{
+      position:absolute; top: -100px; width: 100px; height: 100px; left: calc(50% - 50px);
+      }
+      -->
+    </style>
+    <script type="text/javascript" >
+      var appName = "five-bomber";
+      var app = angular.module(appName, ["ui.bootstrap"]);
+      app.controller('main', ['$scope', '$interval',
+      function($scope, $interval) {
+        var valid = false;
+
+        $scope.time = 300;
+        $scope.playerTime = [0, 0, 0, 0, 0];
+        $scope.players = ["p1", "p2", "p3", "p4", "p5"];
+
+        $scope.timer = function() {
+          if (valid) {
+            valid = false;
+            $scope.time = 300;
+            for (var i = 0; i < 5; i++) {
+              $scope.playerTime[i] = 0;
+            }
+          } else {
+            valid = true;
+          }
+        };
+
+        var t = $interval(function() {
+          if (valid && $scope.time > 0) {
+            if ($scope.playerTime[4] == 0) {
+              $scope.time = $scope.time - 1;
+            }
+          }
+        }, 100);
+
+        $scope.answer = function() {
+          for (var i = 0; i < 5; i++) {
+            if ($scope.playerTime[i] == 0) {
+              $scope.playerTime[i] = $scope.time;
+              return;
+            }
+          }
+        };
+        
+        $scope.stop = function(){
+        	valid = ! valid;
+        }
+
+        $scope.displayTime = function() {
+          var s = Math.floor($scope.time / 10);
+          var f = $scope.time - s * 10;
+          return s + "." + f;
+        }
+
+        $scope.getBarStyle = function(index) {
+          var style = {
+            position : "absolute",
+            left : "0%",
+            width : "100%",
+            height : "5%",
+            "border" : "3px solid gray",
+            "background" : "repeating-linear-gradient(90deg, gray, gray 3px, white 0px, white 33.3%)",
+            "background-color" : "white"
+          };
+
+          if ($scope.playerTime[index] == 0) {
+            style["top"] = (100 - $scope.time / 300 * 70) + "%";
+          } else {
+            style["top"] = (100 - $scope.playerTime[index] / 300 * 70) + "%";
+          }
+
+          return style;
+        };
+
+        $scope.isBakudan = function(index) {
+          if (valid) {
+            if ($scope.playerTime[index] == 0) {
+              if (index == 0 || $scope.playerTime[index - 1] > 0) {
+                return true;
+              } else {
+                return false;
+              }
+            } else {
+              return false;
+            }
+
+          } else {
+            return false;
+          }
+        }
+      }]);
+
+    </script>
+
+  </head>
+
+  <body ng-controller="main">
+    <div class="time">
+      {{displayTime()}}
+    </div>
+    <button class="btn" ng-click="timer()">
+      Start/Reset
+    </button>
+    <button class="btn" ng-click="answer()">
+      Answer
+    </button>
+    <button class="btn" ng-click="stop()">
+      Stop/Restart
+    </button>
+    <div ng-repeat="player in players" ng-class="player">
+      <div ng-style="getBarStyle($index)">
+        <img class="bakudan" src="img/bakudan.png" ng-if="isBakudan($index)" />
+      </div>
+    </div>
+  </body>
+</html>
