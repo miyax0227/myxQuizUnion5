@@ -9,36 +9,67 @@
 
     <style type="text/css">
       <!--
+      @font-face {
+      font-family: "MigMix 1M";
+      src: url("../font/migmix-1m-regular.ttf");
+      src: url("../font/migmix-1m-bold.ttf");
+      }
+
       body {
-      background-color: lightgray;
+      background:
+      radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent),
+      radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent) 50px 50px,
+      linear-gradient(#A8B1BB 8px, transparent 8px) 0 -4px,
+      linear-gradient(90deg, #A8B1BB 8px, transparent 8px) -4px 0;
+      background-color: slategray;
+      background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
+      }
+      img.back{
+      position:absolute;
+      left:0%;
+      width:100%;
+      top:10%;
+      height:56%;
       }
 
       div.p1{
-      position:absolute; left:2%; width:16%; top:10%; height:80%;
-      background: linear-gradient(to left, black, lightblue, black);
+      position:absolute; left:2%; width:16%; top:10%; height:80%; opacity: 0.9;
+      background: url('img/banner01.png');
       }
       div.p2{
-      position:absolute; left:22%; width:16%; top:10%; height:80%;
-      background: linear-gradient(to left, black, lightgreen, black);
+      position:absolute; left:22%; width:16%; top:10%; height:80%; opacity: 0.9;
+      background: url('img/banner04.png');
       }
       div.p3{
-      position:absolute; left:42%; width:16%; top:10%; height:80%;
-      background: linear-gradient(to left, black, yellow, black);
+      position:absolute; left:42%; width:16%; top:10%; height:80%; opacity: 0.9;
+      background: url('img/banner03.png');
       }
       div.p4{
-      position:absolute; left:62%; width:16%; top:10%; height:80%;
-      background: linear-gradient(to left, black, orange, black);
+      position:absolute; left:62%; width:16%; top:10%; height:80%; opacity: 0.9;
+      background: url('img/banner05.png');
       }
       div.p5{
-      position:absolute; left:82%; width:16%; top:10%; height:80%;
-      background: linear-gradient(to left, black, red, black);
+      position:absolute; left:82%; width:16%; top:10%; height:80%; opacity: 0.9;
+      background: url('img/banner02.png');
       }
       div.time{
-      position:absolute; right:2%; top:1%;
-      font-size: 40px;
+      position:absolute; right:2%; top:-1%;
+      font-size: 72px;
+      font-family: "Migmix 1M";
+      font-weight: bold;
+      -webkit-text-stroke-color: black;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-fill-color: white;
+
+      }
+      img.bar{
+      width:100%; height:auto
       }
       img.bakudan{
-      position:absolute; top: -100px; width: 100px; height: 100px; left: calc(50% - 50px);
+      position:absolute; top: -50px; width: 100px; height: 100px; left: calc(50% - 50px);
+      }
+      img.button {
+      	width: 75px; height:75px;
       }
       -->
     </style>
@@ -81,9 +112,9 @@
             }
           }
         };
-        
-        $scope.stop = function(){
-        	valid = ! valid;
+
+        $scope.stop = function() {
+          valid = !valid;
         }
 
         $scope.displayTime = function() {
@@ -97,16 +128,13 @@
             position : "absolute",
             left : "0%",
             width : "100%",
-            height : "5%",
-            "border" : "3px solid gray",
-            "background" : "repeating-linear-gradient(90deg, gray, gray 3px, white 0px, white 33.3%)",
-            "background-color" : "white"
+            height : "5%"
           };
 
           if ($scope.playerTime[index] == 0) {
-            style["top"] = (100 - $scope.time / 300 * 70) + "%";
+            style["top"] = (70 - $scope.time / 300 * 60) + "%";
           } else {
-            style["top"] = (100 - $scope.playerTime[index] / 300 * 70) + "%";
+            style["top"] = (70 - $scope.playerTime[index] / 300 * 60) + "%";
           }
 
           return style;
@@ -135,20 +163,22 @@
   </head>
 
   <body ng-controller="main">
+    <img class="back" src="img/bg_room_science_rikashitsu.jpg" />
     <div class="time">
       {{displayTime()}}
     </div>
-    <button class="btn" ng-click="timer()">
-      Start/Reset
+    <button ng-click="timer()">
+      <img class="button" src="img/player_button01_saisei.png" />
     </button>
-    <button class="btn" ng-click="answer()">
-      Answer
+    <button ng-click="answer()">
+      <img class="button" src="img/player_button10_rokuon.png" />
     </button>
-    <button class="btn" ng-click="stop()">
-      Stop/Restart
+    <button ng-click="stop()">
+      <img class="button" src="img/player_button05_ichijiteishi.png" />
     </button>
     <div ng-repeat="player in players" ng-class="player">
       <div ng-style="getBarStyle($index)">
+        <img class="bar" src="img/bunbougu_bunchin.png" />
         <img class="bakudan" src="img/bakudan.png" ng-if="isBakudan($index)" />
       </div>
     </div>
