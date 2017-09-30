@@ -315,7 +315,7 @@ div.player div.name1 {
   text-align: center;
   -webkit-user-select: none;
   transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  transform: translate(10px, -5px);
 }
 
 div.player div.torii1 {
@@ -399,7 +399,7 @@ div.player div.name2 {
   text-align: center;
   -webkit-user-select: none;
   transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  transform: translate(10px, -5px);
 }
 
 div.player div.torii2 {
@@ -483,7 +483,7 @@ div.player div.name3 {
   text-align: center;
   -webkit-user-select: none;
   transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  transform: translate(10px, -5px);
 }
 
 div.player div.torii3 {
@@ -567,7 +567,7 @@ div.player div.name4 {
   text-align: center;
   -webkit-user-select: none;
   transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  transform: translate(10px, -5px);
 }
 
 div.player div.torii4 {
@@ -651,7 +651,7 @@ div.player div.name5 {
   text-align: center;
   -webkit-user-select: none;
   transform-origin: 0px 0px;
-  transform: translate(5px, -5px);
+  transform: translate(10px, -5px);
 }
 
 div.player div.torii5 {

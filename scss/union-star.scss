@@ -20,7 +20,7 @@ div.player {
     div.name#{$i} {
       @include player-item($mem_x+nth(nth($delta, $i), 1), $mem_y+15+nth(nth($delta, $i), 2), 0, 24);
       transform-origin: 0px 0px;
-      transform: translate(5px, -5px);
+      transform: translate(10px, -5px);
      }
     div.torii#{$i} {
       @include player-item($mem_x+nth(nth($delta, $i), 1), $mem_y+25+nth(nth($delta, $i), 2), 100, 18, "STU XVIII");

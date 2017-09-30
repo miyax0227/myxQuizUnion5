@@ -22,7 +22,7 @@ div.player {
     div.name#{$i} {
       @include player-item(-125, -75+75*$i, 0, 60);
       transform-origin: 0px 0px;
-      transform: translate(10px, -5px);
+      transform: translate(30px, -5px);
       opacity: nth($mem_opacity, $i);
     }
     div.torii#{$i} {
