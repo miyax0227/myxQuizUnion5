@@ -1,7 +1,7 @@
 [
 	{
 		"title": "1Round : Take-off",
-		"maxRankDisplay": 5,
+		"maxRankDisplay": 3,
 		"openRankArray": null,
 		"winningPoint": 5,
 		"losingPoint": 3,

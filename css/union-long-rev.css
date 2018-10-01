@@ -229,10 +229,11 @@ div.player div.o {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player div.o div.chance {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.x {
@@ -279,6 +280,7 @@ div.player div.winningPoint {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player {
@@ -350,7 +352,7 @@ div.player div.oo1 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: lightskyblue;
+  color: lightblue;
   display: none;
 }
 
@@ -412,7 +414,7 @@ div.player div.oo2 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: lightskyblue;
+  color: lightblue;
   display: none;
 }
 
@@ -474,7 +476,7 @@ div.player div.oo3 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: lightskyblue;
+  color: lightblue;
   display: none;
 }
 
@@ -536,7 +538,7 @@ div.player div.oo4 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: lightskyblue;
+  color: lightblue;
   display: none;
 }
 
@@ -598,7 +600,7 @@ div.player div.oo5 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
-  color: lightskyblue;
+  color: lightblue;
   display: none;
 }
 

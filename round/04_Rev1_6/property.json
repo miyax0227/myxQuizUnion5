@@ -1,0 +1,13 @@
+[
+	{
+		"title": "Revival: Climb the cliff",
+		"maxRankDisplay": 1,
+		"openRankArray": null,
+		"winningPoint": 3,
+		"losingPoint": 2,
+		"penalty": 0,
+		"tweetRoundTitle": "[Rev1]",
+		"lots": [1],
+		"norma": [1, 1, 1, 0, 0]
+	}
+]

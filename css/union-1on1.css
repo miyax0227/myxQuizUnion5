@@ -228,10 +228,11 @@ div.player div.o {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player div.o div.chance {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.x {
@@ -346,6 +347,7 @@ div.player div.oo1 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player div.oo1 div.right {
@@ -357,7 +359,7 @@ div.player div.oo1 div.left {
 }
 
 div.player div.oo1 div.chance1 {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.oo1 div.win1 {
@@ -446,6 +448,7 @@ div.player div.oo2 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player div.oo2 div.right {
@@ -457,7 +460,7 @@ div.player div.oo2 div.left {
 }
 
 div.player div.oo2 div.chance2 {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.oo2 div.win2 {
@@ -546,6 +549,7 @@ div.player div.oo3 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player div.oo3 div.right {
@@ -557,7 +561,7 @@ div.player div.oo3 div.left {
 }
 
 div.player div.oo3 div.chance3 {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.oo3 div.win3 {
@@ -646,6 +650,7 @@ div.player div.oo4 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player div.oo4 div.right {
@@ -657,7 +662,7 @@ div.player div.oo4 div.left {
 }
 
 div.player div.oo4 div.chance4 {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.oo4 div.win4 {
@@ -746,6 +751,7 @@ div.player div.oo5 {
   font-weight: bold;
   text-align: center;
   -webkit-user-select: none;
+  font-family: "Meiryo UI";
 }
 
 div.player div.oo5 div.right {
@@ -757,7 +763,7 @@ div.player div.oo5 div.left {
 }
 
 div.player div.oo5 div.chance5 {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.oo5 div.win5 {

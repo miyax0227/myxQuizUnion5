@@ -6,7 +6,7 @@ var app = angular.module(appName);
 /*******************************************************************************
  * rule - ラウンド特有のクイズのルール・画面操作の設定
  ******************************************************************************/
-app.factory('rule', [ 'qCommon', function(qCommon) {
+app.factory('rule', ['qCommon', function (qCommon) {
 
   var rule = {};
   var win = qCommon.win;
@@ -20,23 +20,23 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
   /*****************************************************************************
    * header - ルール固有のヘッダ
    ****************************************************************************/
-  rule.head = [ {
-	key : "mode",
-	value : "position",
-	style : "string"
+  rule.head = [{
+    key: "mode",
+    value: "position",
+    style: "string"
   }, {
-	key : "nowLot",
-	value : 1,
-	style : "number"
-  } ];
+    key: "nowLot",
+    value: 1,
+    style: "number"
+  }];
 
   /*****************************************************************************
    * items - ルール固有のアイテム
    ****************************************************************************/
   rule.items = [{
-	key : "nameLat",
-	css : "nameLat",
-	htrans : 4.1
+    key: "nameLat",
+    css: "nameLat",
+    htrans: 4.1
   }];
 
   /*****************************************************************************
@@ -67,12 +67,12 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
    * @param {Object} property - property
    ****************************************************************************/
   function judgement(players, header, property) {
-	angular.forEach(players.filter(function(item) {
-	  /* rankがない人に限定 */
-	  return (item.rank == 0);
-	}), function(player, i) {
+    angular.forEach(players.filter(function (item) {
+      /* rankがない人に限定 */
+      return (item.rank == 0);
+    }), function (player, i) {
 
-	});
+    });
   }
 
   /*****************************************************************************
@@ -82,23 +82,23 @@ app.factory('rule', [ 'qCommon', function(qCommon) {
    * @param {Object} items - items
    ****************************************************************************/
   function calc(players, header, items, property) {
-	var pos = 0;
-	var positionArray = [ 0, 0, 0, 0, 0 ,0];
-	
-	angular.forEach(players, function(player, index) {
-	  // 横向き名前
-	  player.nameLat = player.name;
-	  
-	  // 位置計算
-	  player.line = "rev" + player.lot;
-	  player.keyIndex = -1;
-	  player.position = positionArray[player.lot]++;
-	  
-	  // キーボード入力時の配列の紐付け ローリング等の特殊形式でない場合はこのままでOK
-	  // player.keyIndex = index;
+    var pos = 0;
+    var positionArray = [0, 0, 0, 0, 0, 0, 0];
 
-	});
+    angular.forEach(players, function (player, index) {
+      // 横向き名前
+      player.nameLat = player.name;
+
+      // 位置計算
+      player.line = "rev" + player.lot;
+      player.keyIndex = -1;
+      player.position = positionArray[player.lot]++;
+
+      // キーボード入力時の配列の紐付け ローリング等の特殊形式でない場合はこのままでOK
+      // player.keyIndex = index;
+
+    });
   }
 
   return rule;
-} ]);
+}]);

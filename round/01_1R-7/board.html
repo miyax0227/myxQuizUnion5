@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="../../css/bootstrap.min.css" >
 		<link rel="stylesheet" href="../../css/style.css" >
-		<link rel="stylesheet" href="../../css/union-rev.css" >
+		<link rel="stylesheet" href="../../css/union-long.css" >
 		<script src="../../js/libs/angular.js"></script>
 		<script src="../../js/libs/ngStorage.min.js"></script>
 		<script src="../../js/libs/angular-animate.min.js"></script>
@@ -15,23 +15,19 @@
 		<script src="../../js/factory/qcommon.js"></script>
 		<script src="../../js/factory/round.js"></script>
 		<!-- ルール設定 ここから(ruleフォルダ内のjsファイルを1つだけ選択すること) -->
-		<script src="../../js/rule/union-rev.js"></script>
+		<script src="../../js/rule/union-rolling.js"></script>
 		<!-- ルール設定 ここまで-->
 	</head>
 
 	<body ng-controller="main" ng-keydown="keyDown($event)">
 		<div scoreboard>
 			<div class="qCount" >
-				組分け
+				7組目
+    			<span ng-if="current.header.playoff"> - プレーオフ </span>
   			</div>
-			<div class="lot1">第1組</div>
-			<div class="lot2">第2組</div>
-			<div class="lot3">第3組</div>
-			<div class="lot4">第4組</div>
-			<div class="lot5">第5組</div>
-			<div class="lot6">第6組</div>
-　　　		<!-- 優勝画面 ここから(優勝画面が不要な場合は<div victory></div>をコメント化すること) -->
-　　　		<!-- 優勝画面 ここまで -->
+	　　　		<!-- 優勝画面 ここから(優勝画面が不要な場合は<div victory></div>をコメント化すること) -->
+				<!-- <div victory></div> -->
+	　　　		<!-- 優勝画面 ここまで -->
 		</div>
 	</body>
 </html>

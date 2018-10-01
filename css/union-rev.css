@@ -231,7 +231,7 @@ div.player div.o {
 }
 
 div.player div.o div.chance {
-  color: lightskyblue;
+  color: lightblue;
 }
 
 div.player div.x {
@@ -287,8 +287,9 @@ div.lot1 {
   font-size: 48px;
   -webkit-user-select: none;
   top: 15%;
-  left: 5.2%;
+  left: 3.5%;
   text-align: center;
+  text-decoration:underline;
 }
 
 div.lot2 {
@@ -298,8 +299,9 @@ div.lot2 {
   font-size: 48px;
   -webkit-user-select: none;
   top: 15%;
-  left: 25.2%;
+  left: 20.2%;
   text-align: center;
+  text-decoration:underline;
 }
 
 div.lot3 {
@@ -309,8 +311,9 @@ div.lot3 {
   font-size: 48px;
   -webkit-user-select: none;
   top: 15%;
-  left: 45.2%;
+  left: 36.9%;
   text-align: center;
+  text-decoration:underline;
 }
 
 div.lot4 {
@@ -320,8 +323,9 @@ div.lot4 {
   font-size: 48px;
   -webkit-user-select: none;
   top: 15%;
-  left: 65.2%;
+  left: 53.5%;
   text-align: center;
+  text-decoration:underline;
 }
 
 div.lot5 {
@@ -331,8 +335,21 @@ div.lot5 {
   font-size: 48px;
   -webkit-user-select: none;
   top: 15%;
-  left: 85.2%;
+  left: 70.2%;
   text-align: center;
+  text-decoration:underline;
+}
+
+div.lot6 {
+  font-family: "MigMix 1M";
+  font-weight: bold;
+  position: absolute;
+  font-size: 48px;
+  -webkit-user-select: none;
+  top: 15%;
+  left: 86.9%;
+  text-align: center;
+  text-decoration:underline;
 }
 
 div.player hr.hr1 {
